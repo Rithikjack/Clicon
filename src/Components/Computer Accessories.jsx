@@ -22,9 +22,6 @@ import Wash from '../assets/Washing Machine.png'
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const tabs = ["All Product", "Keyboard & Mouse", "Headphone", "Webcam", "Printer"];
 
-
-
-
 const products = [
     {
         id: 1,
@@ -172,7 +169,7 @@ function ProductCard({ product }) {
             <Box
                 sx={{
                     width: "100%",
-                    height: "130px",
+                    height: { xs: "100px", sm: "120px", md: "130px" },
                     backgroundColor: "",
                     display: "flex",
                     alignItems: "center",
@@ -199,7 +196,7 @@ function ProductCard({ product }) {
             {/* Name */}
             <Typography
                 sx={{
-                    fontSize: "13px",
+                    fontSize: { xs: "11px", sm: "12px", md: "13px" },
                     color: "#222",
                     lineHeight: 1.45,
                     fontFamily: "sans-serif",
@@ -244,7 +241,7 @@ function EarbudsPromo() {
     return (
         <Box
             sx={{
-                backgroundColor: "#FFD580 ",
+                backgroundColor: "#FFD580",
                 borderRadius: "6px",
                 p: "20px",
                 display: "flex",
@@ -252,11 +249,9 @@ function EarbudsPromo() {
                 alignItems: "center",
                 justifyContent: "center",
                 textAlign: "center",
-
-                // ✅ FIXED: removed mb here, gap handled by parent
             }}
         >
-            {/* Image placeholder */}
+            {/* Image */}
             <Box
                 sx={{
                     width: "70px",
@@ -273,18 +268,14 @@ function EarbudsPromo() {
                     component="img"
                     src={Buds}
                     alt="Xiaomi Earbuds"
-                    sx={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                    }}
+                    sx={{ width: "100%", height: "100%", objectFit: "contain" }}
                 />
             </Box>
 
             <Typography
                 sx={{
                     fontSize: "14px",
-                    fontWeight: 'bold',
+                    fontWeight: "bold",
                     color: "#111",
                     lineHeight: 1.25,
                     fontFamily: "sans-serif",
@@ -303,13 +294,11 @@ function EarbudsPromo() {
                     lineHeight: 1.55,
                     fontFamily: "sans-serif",
                     mb: "14px",
-                    display: 'flex',
-                    justifyContent: 'center',
-                    width: '202%'
+                    textAlign: "center",
                 }}
             >
                 Escape the noise, <br />
-                It’s time to hear the magic <br />
+                It's time to hear the magic <br />
                 with Xiaomi Earbuds.
             </Typography>
 
@@ -379,12 +368,11 @@ function DiscountPromo() {
                 justifyContent: "center",
                 textAlign: "center",
                 minHeight: "200px",
-
             }}
         >
             <Typography
                 sx={{
-                    marginTop: '-10px',
+                    marginTop: "-10px",
                     fontSize: "10px",
                     fontWeight: 600,
                     color: "#aab4cc",
@@ -447,14 +435,19 @@ export default function ComputerAccessories() {
     const [activeTab, setActiveTab] = useState("All Product");
 
     return (
-        <Box sx={{ backgroundColor: "#fff", minHeight: "100vh", py: "32px" }}>
-            <Box sx={{ maxWidth: "1200px", mx: "auto", px: { xs: "16px", md: "24px" } }}>
+        <Box sx={{ backgroundColor: "#fff", minHeight: "100vh", py: { xs: "16px", md: "32px" } }}>
+            <Box sx={{ maxWidth: "1200px", mx: "auto", px: { xs: "12px", sm: "16px", md: "24px" } }}>
 
                 {/* ── Outer Row: Left (header + grid) | Right (promo boxes) ── */}
-                <Box sx={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <Box sx={{
+                    display: "flex",
+                    gap: { xs: "12px", md: "16px" },
+                    alignItems: "flex-start",
+                    flexDirection: { xs: "column", md: "row" },  // stack on mobile
+                }}>
 
                     {/* LEFT SIDE: Header + Product Grid stacked */}
-                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Box sx={{ flex: 1, minWidth: 0, width: "100%" }}>
 
                         {/* Header Row */}
                         <Box
@@ -469,29 +462,34 @@ export default function ComputerAccessories() {
                             {/* Section Title */}
                             <Typography
                                 sx={{
-                                    fontSize: "18px",
+                                    fontSize: { xs: "15px", md: "18px" },
                                     fontWeight: 700,
                                     color: "#111",
                                     fontFamily: "sans-serif",
-                                    mr: "28px",
+                                    mr: { xs: "12px", md: "28px" },
                                     whiteSpace: "nowrap",
                                 }}
                             >
                                 Computer Accessories
                             </Typography>
 
-                            {/* Tabs */}
-                            <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", flex: 1 }}>
+                            {/* Tabs — hidden on xs, visible from sm */}
+                            <Box sx={{
+                                display: { xs: "none", sm: "flex" },
+                                alignItems: "center",
+                                flexWrap: "wrap",
+                                flex: 1,
+                            }}>
                                 {tabs.map((tab) => (
                                     <Typography
                                         key={tab}
                                         onClick={() => setActiveTab(tab)}
                                         sx={{
-                                            fontSize: "13px",
+                                            fontSize: { sm: "12px", md: "13px" },
                                             fontWeight: activeTab === tab ? 600 : 400,
                                             color: activeTab === tab ? "#f5a623" : "#333",
                                             borderBottom: activeTab === tab ? "2px solid #f5a623" : "2px solid transparent",
-                                            px: "12px",
+                                            px: { sm: "8px", md: "12px" },
                                             py: "8px",
                                             cursor: "pointer",
                                             fontFamily: "sans-serif",
@@ -520,14 +518,64 @@ export default function ComputerAccessories() {
                                     <ArrowForwardIcon sx={{ fontSize: "14px", color: "#f5a623" }} />
                                 </Box>
                             </Box>
+
+                            {/* Browse All — visible only on xs */}
+                            <Box sx={{
+                                display: { xs: "flex", sm: "none" },
+                                alignItems: "center",
+                                gap: "4px",
+                                ml: "auto",
+                                cursor: "pointer",
+                            }}>
+                                <Typography sx={{ fontSize: "12px", color: "#f5a623", fontWeight: 600, fontFamily: "sans-serif" }}>
+                                    Browse All
+                                </Typography>
+                                <ArrowForwardIcon sx={{ fontSize: "13px", color: "#f5a623" }} />
+                            </Box>
                         </Box>
 
-                        {/* Product Grid: 4 cols × 2 rows */}
+                        {/* Tabs row — shown only on xs below title */}
+                        <Box sx={{
+                            display: { xs: "flex", sm: "none" },
+                            overflowX: "auto",
+                            gap: "0",
+                            mb: "12px",
+                            pb: "4px",
+                            "&::-webkit-scrollbar": { display: "none" },
+                        }}>
+                            {tabs.map((tab) => (
+                                <Typography
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    sx={{
+                                        fontSize: "12px",
+                                        fontWeight: activeTab === tab ? 600 : 400,
+                                        color: activeTab === tab ? "#f5a623" : "#333",
+                                        borderBottom: activeTab === tab ? "2px solid #f5a623" : "2px solid transparent",
+                                        px: "10px",
+                                        py: "6px",
+                                        cursor: "pointer",
+                                        fontFamily: "sans-serif",
+                                        whiteSpace: "nowrap",
+                                        flexShrink: 0,
+                                        transition: "color 0.2s",
+                                    }}
+                                >
+                                    {tab}
+                                </Typography>
+                            ))}
+                        </Box>
+
+                        {/* Product Grid: 4 cols on md+, 2 cols on xs/sm */}
                         <Box
                             sx={{
                                 display: "grid",
-                                gridTemplateColumns: "repeat(4, 1fr)",
-                                gap: "10px",
+                                gridTemplateColumns: {
+                                    xs: "repeat(2, 1fr)",
+                                    sm: "repeat(2, 1fr)",
+                                    md: "repeat(4, 1fr)",
+                                },
+                                gap: { xs: "8px", md: "10px" },
                             }}
                         >
                             {products.map((product) => (
@@ -537,20 +585,24 @@ export default function ComputerAccessories() {
 
                     </Box>
 
-                    {/* RIGHT SIDE: Promo boxes — aligned to very top */}
+                    {/* RIGHT SIDE: Promo boxes */}
                     <Box
                         sx={{
-                            width: "210px",
-                            minWidth: "210px",
+                            width: { xs: "100%", md: "210px" },
+                            minWidth: { md: "210px" },
                             flexShrink: 0,
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: { xs: "row", md: "column" },  // side by side on mobile
                             gap: "16px",
                             alignSelf: "flex-start",
                         }}
                     >
-                        <EarbudsPromo />
-                        <DiscountPromo />
+                        <Box sx={{ flex: { xs: 1, md: "unset" } }}>
+                            <EarbudsPromo />
+                        </Box>
+                        <Box sx={{ flex: { xs: 1, md: "unset" } }}>
+                            <DiscountPromo />
+                        </Box>
                     </Box>
 
                 </Box>

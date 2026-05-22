@@ -269,7 +269,14 @@ const Footer = () => {
   <Link
     href="/computer-laptop"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Computer & Laptop
   </Link>
@@ -277,7 +284,14 @@ const Footer = () => {
   <Link
     href="/smartphone"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     SmartPhone
   </Link>
@@ -285,7 +299,14 @@ const Footer = () => {
   <Link
     href="/headphone"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Headphone
   </Link>
@@ -299,6 +320,9 @@ const Footer = () => {
       mb: 1,
       borderLeft: '3px solid #EBC80C',
       pl: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
     }}
   >
     Accessories
@@ -307,7 +331,14 @@ const Footer = () => {
   <Link
     href="/camera-photo"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Camera & Photo
   </Link>
@@ -315,7 +346,14 @@ const Footer = () => {
   <Link
     href="/tv-homes"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 2 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 2,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     TV & Homes
   </Link>
@@ -330,6 +368,9 @@ const Footer = () => {
       gap: 1,
       fontSize: '14px',
       textDecoration: 'none',
+      '&:hover': {
+        color: '#EBC80C',
+      }
     }}
   >
     Browse All Product
@@ -363,7 +404,14 @@ const Footer = () => {
   <Link
     href="/shop"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Shop Product
   </Link>
@@ -371,7 +419,14 @@ const Footer = () => {
   <Link
     href="/cart"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Shopping Cart
   </Link>
@@ -379,7 +434,14 @@ const Footer = () => {
   <Link
     href="/wishlist"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Wishlist
   </Link>
@@ -387,7 +449,14 @@ const Footer = () => {
   <Link
     href="/compare"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Compare
   </Link>
@@ -395,7 +464,14 @@ const Footer = () => {
   <Link
     href="/track-order"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Track Order
   </Link>
@@ -403,7 +479,14 @@ const Footer = () => {
   <Link
     href="/customer-help"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     Customer Help
   </Link>
@@ -411,7 +494,14 @@ const Footer = () => {
   <Link
     href="/about-us"
     underline="none"
-    sx={{ color: 'grey', display: 'block', mb: 1 }}
+    sx={{ 
+      color: 'grey', 
+      display: 'block', 
+      mb: 1,
+      '&:hover': {
+        color: '#EBC80C',
+      }
+    }}
   >
     About Us
   </Link>
@@ -660,85 +750,6 @@ const Footer = () => {
 
                         </Grid>
 
-
-
-
-
-                        {/* Popular Tags 
-                        <Grid item xs={12} md={3}>
-
-                            <Typography
-                                sx={{
-                                    color: '#FFFFFF',
-                                    fontSize: '20px',
-                                    fontWeight: 600,
-                                    mb: 3,
-                                }}
-                            >
-                                POPULAR TAG
-                            </Typography>
-
-
-
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    gap: '10px',
-                                }}
-                            >
-
-                                {[
-                                    'Game',
-                                    'iPhone',
-                                    'TV',
-                                    'Asus Laptops',
-                                    'Macbook',
-                                    'SSD',
-                                    'Graphics Card',
-                                    'Power Bank',
-                                    'Smart TV',
-                                    'Speaker',
-                                    'Tablet',
-                                    'Microwave',
-                                    'Samsung',
-                                ].map((item) => (
-
-                                    <Button
-                                        key={item}
-                                        variant="outlined"
-                                        disableRipple
-                                        sx={{
-                                            color: '#FFFFFF',
-                                            border: '1px solid #2B3440',
-                                            backgroundColor: 'transparent',
-
-                                            textTransform: 'none',
-                                            fontSize: '14px',
-                                            fontWeight: 400,
-
-                                            borderRadius: '2px',
-
-                                            minWidth: 'auto',
-
-                                            padding: '10px 16px',
-
-                                            lineHeight: 1,
-
-                                            '&:hover': {
-                                                border: '1px solid #FFFFFF',
-                                                backgroundColor: 'transparent',
-                                            }
-                                        }}
-                                    >
-                                        {item}
-                                    </Button>
-
-                                ))}
-
-                            </Box>
-                        </Grid> */}
-
                     </Grid>
 
 
@@ -773,4 +784,4 @@ const Footer = () => {
     )
 }
 
-export default Footer   
+export default Footer
