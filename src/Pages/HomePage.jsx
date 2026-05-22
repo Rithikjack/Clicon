@@ -20,23 +20,17 @@ const HomePage = () => {
     <>
 
       <Offerbar />
-      {/* <Navbar/> */}
-
+      <Offerbar/>
       <Navbar />
-      <Box>
-
-
-        <HeroSection />
-        <BestDeals />
-        <Categories />
-        <FeaturedProducts />
-        <PromoBanner />
-
+      <HeroSection/>
+      <BestDeals/>
+      <Categories/>
+      <FeaturedProducts/>
+      <PromoBanner/>
         <Accessories />
         <Sells />
         <News />
-        <Footer />
-      </Box>
+       <Footer />
     </>
   )
 }

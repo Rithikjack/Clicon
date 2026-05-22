@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -20,7 +21,7 @@ import SignInPopup from '../signin/SignInPopup';
 import ShoppingCartPopup from './ShoppingCartPopup';
 
 // Assets
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/Mainlogo.png';
 import twitter from '../../assets/Twitter.png';
 import instagram from '../../assets/Instagram.png';
 import reddit from '../../assets/Reddit.png';
@@ -29,7 +30,6 @@ import youtube from '../../assets/Youtube.png';
 import cart from '../../assets/ShoppingCartSimple.png';
 import favoute from '../../assets/Heart.png';
 import user from '../../assets/User.png';
-
 
 const categories = [
   "Computer & Laptop", "Computer Accessories", "SmartPhone", "Headphone",
@@ -150,13 +150,14 @@ const TopBarDropdown = ({ value, options, onSelect, color = '#fff' }) => {
 };
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const [catAnchor, setCatAnchor] = useState(null);
   const [language, setLanguage] = useState('Eng');
   const [currency, setCurrency] = useState('USD');
   const [openSignIn, setOpenSignIn] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
-  // Shared cart item count — pass down or lift to context/redux as needed
   const cartItemCount = 2;
 
   const handleCatClick = (event) => setCatAnchor(event.currentTarget);
@@ -193,7 +194,10 @@ const Navbar = () => {
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <Box
+            onClick={() => navigate('/')}
+            sx={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}
+          >
             <img src={logo} alt="Logo" style={{ width: 30 }} />
             <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>CLICON</Typography>
           </Box>
@@ -209,9 +213,10 @@ const Navbar = () => {
           {/* Icons */}
           <Box sx={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
 
-            {/* Cart icon with badge — opens ShoppingCartPopup */}
+            {/* Cart icon with badge */}
             <IconButton sx={{ p: 0 }} onClick={() => setOpenCart(true)}>
-              <Badge              
+              <Badge
+               
               >
                 <img src={cart} style={{ width: 28 }} alt="Cart" />
               </Badge>
@@ -222,7 +227,7 @@ const Navbar = () => {
               <img src={favoute} style={{ width: 24 }} alt="Wishlist" />
             </IconButton>
 
-            {/* Account — opens SignInPopup */}
+            {/* Account */}
             <IconButton sx={{ p: 0 }} onClick={() => setOpenSignIn(true)}>
               <img src={user} style={{ width: 24 }} alt="Account" />
             </IconButton>
@@ -259,19 +264,29 @@ const Navbar = () => {
           ))}
         </Menu>
 
+        {/* Nav Links */}
         <Box sx={{ display: 'flex', gap: 3, alignItems: 'center', color: '#5f6c73' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
+
+          {/* Track Order → navigates to /track-order */}
+          <Box
+            onClick={() => navigate('/track-order')}
+            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}
+          >
             <LocationOnOutlinedIcon fontSize="small" /> Track Order
           </Box>
+
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
             <CompareArrowsIcon fontSize="small" /> Compare
           </Box>
+
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
             <HeadsetMicOutlinedIcon fontSize="small" /> Customer Support
           </Box>
+
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
             <InfoOutlinedIcon fontSize="small" /> Need Help
           </Box>
+
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
