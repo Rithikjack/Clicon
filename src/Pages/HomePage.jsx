@@ -1,7 +1,7 @@
 import React from 'react'
 import Offerbar from '../Components/Home/Offerbar'
 import Navbar from '../Components/Home/Navbar'
-import Footer from '../Components/Home/Footerr'
+import Footer from '../Components/Home/Footer'
 import Box from '@mui/material/Box';
 import News from '../Components/News'
 import Sells from '../Components/Sells'
@@ -19,7 +19,7 @@ const HomePage = () => {
   return (
     <>
 
-      <Offerbar />
+
       <Offerbar/>
       <Navbar />
       <HeroSection/>
