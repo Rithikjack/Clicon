@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import shopArrow from '../../assets/Blackarrow.png'
 
 const Offerbar = () => {
   const [visible, setVisible] = useState(true);
@@ -23,20 +24,22 @@ const Offerbar = () => {
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
-        <Box
-          sx={{
-            backgroundColor: '#F3DE6D',
-            color: '#111',
-            fontWeight: 700,
-            fontSize: '12px',
-            px: '7px',
-            py: '2px',
-            lineHeight: 1.5,
-            fontFamily: "'Public Sans', sans-serif",
-          }}
-        >
-          Black
-        </Box>
+       <Box
+  sx={{
+    backgroundColor: '#F3DE6D',
+    color: '#111',
+    fontWeight: 700,
+    fontSize: '12px',
+    px: '7px',
+    py: '2px',
+    lineHeight: 1.5,
+    fontFamily: "'Public Sans', sans-serif",
+    transform: 'rotate(-3deg)',        // ← add this
+    display: 'inline-block',           // ← needed for transform to work
+  }}
+>
+  Black
+</Box>
         <Typography
           sx={{
             color: '#fff',
@@ -53,7 +56,7 @@ const Offerbar = () => {
       <Box
         sx={{
           display: 'flex',
-          alignItems: 'baseline',
+          alignItems: 'center',
           gap: '5px',
           position: 'absolute',
           left: '50%',
@@ -112,7 +115,17 @@ const Offerbar = () => {
             },
           }}
         >
-          SHOP NOW →
+          SHOP NOW 
+          <Box
+                  component="img"
+                  src={shopArrow}             // ← your arrow image
+                  alt="arrow"
+                  sx={{
+                    width: '18px',            // ← adjust width
+                    height: '14px',           // ← adjust height
+                    objectFit: 'contain',
+                  }}
+                />
         </Button>
       </Box>
     </Box>

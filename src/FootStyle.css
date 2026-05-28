@@ -3,4 +3,25 @@
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 0%;
+
+}
+
+/* Prevent horizontal scroll globally */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Ensure images don't cause overflow */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

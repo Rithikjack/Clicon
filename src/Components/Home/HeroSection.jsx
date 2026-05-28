@@ -160,11 +160,9 @@ const HeroSection = () => {
           </Box>
         </Grid>
 
-        {/* RIGHT SIDE */}
         <Grid item xs={12} md={4}>
           <Grid container spacing={2} direction="column">
 
-            {/* TOP CARD */}
             <Grid item>
               <Box
                 sx={{
@@ -216,7 +214,7 @@ const HeroSection = () => {
                   SHOP NOW →
                 </Button>
 
-                {/* DISCOUNT */}
+         
                 <Box
                   sx={{
                     position: 'absolute',
@@ -233,7 +231,7 @@ const HeroSection = () => {
                   29% OFF
                 </Box>
 
-                {/* IMAGE */}
+               
                 <Box
                   component="img"
                   src={pixelImage}
@@ -325,7 +323,7 @@ const HeroSection = () => {
         </Grid>
       </Grid>
 
-      {/* FEATURE BAR */}
+    
       <Paper
         elevation={0}
         sx={{

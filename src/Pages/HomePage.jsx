@@ -20,13 +20,13 @@ const HomePage = () => {
     <>
 
 
-      <Offerbar/>
-      <Navbar />
-      <HeroSection/>
-      <BestDeals/>
-      <Categories/>
-      <FeaturedProducts/>
-      <PromoBanner/>
+        <Offerbar />
+        <Navbar />
+        <HeroSection/>
+        <BestDeals/>
+        <Categories/>
+        <FeaturedProducts/>
+        <PromoBanner/>
         <Accessories />
         <Sells />
         <News />
