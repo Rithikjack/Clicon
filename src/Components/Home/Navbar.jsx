@@ -13,16 +13,19 @@ import Badge from '@mui/material/Badge';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
-import HeadsetMicOutlinedIcon from '@mui/icons-material/HeadsetMicOutlined';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import SignInPopup from '../signin/SignInPopup';
 import ShoppingCartPopup from './ShoppingCartPopup';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 
 import { Link } from "react-router-dom";
+import compareIcon from '../../assets/Compareicon.png'
+import trackIcon from '../../assets/TrackOrdericon.png';
+import supportIcon from '../../assets/CustomerSupporticon.png';
+import helpIcon from '../../assets/Helpicon.png';
+import callIcon from '../../assets/PhoneCall.png';
+import magnifiying from '../../assets/MagnifyingGlass.png'
+
 
 // Assets
 import logo from '../../assets/Mainlogo.png';
@@ -31,6 +34,7 @@ import instagram from '../../assets/Instagram.png';
 import reddit from '../../assets/Reddit.png';
 import printrest from '../../assets/Pinterest.png';
 import youtube from '../../assets/Youtube.png';
+import facebook from '../../assets/Facebook.png';
 import cart from '../../assets/ShoppingCartSimple.png';
 import favoute from '../../assets/Heart.png';
 import user from '../../assets/User.png';
@@ -82,13 +86,14 @@ const currencies = [
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
-  borderRadius: '4px',
+  borderRadius: '2px',
   backgroundColor: '#ffffff',
   height: '45px',
   display: 'flex',
   alignItems: 'center',
   marginRight: theme.spacing(2),
   marginLeft: 0,
+  fontFamily: "'Public Sans', sans-serif",
   width: '100%',
   [theme.breakpoints.up('sm')]: { marginLeft: theme.spacing(3), width: '600px' },
 }));
@@ -106,7 +111,10 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: '#333',
   width: '100%',
-  paddingLeft: '10px',
+  paddingLeft: '15px',
+  fontFamily: "'Public Sans', sans-serif",
+  fontSize:14,
+  color:'#77878F',
   '& .MuiInputBase-input': { padding: theme.spacing(1, 1, 1, 0), fontSize: '14px' },
 }));
 
@@ -125,10 +133,11 @@ const TopBarDropdown = ({ value, options, onSelect, color = '#fff' }) => {
           cursor: 'pointer',
           color,
           userSelect: 'none',
+          fontFamily: "'Public Sans', sans-serif",
           '&:hover': { opacity: 0.85 }
         }}
       >
-        <Typography variant="body2" sx={{ fontSize: '13px', color }}>
+        <Typography variant="body2" sx={{ fontSize: '13px', color,fontFamily: "'Public Sans', sans-serif" }}>
           {value}
         </Typography>
         <KeyboardArrowDownIcon sx={{ fontSize: '16px', color }} />
@@ -196,8 +205,8 @@ const Navbar = () => {
 
     <Box sx={{ flexGrow: 1 }}>
       {/* 1. Top Utility Bar */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1, bgcolor: '#1B6392', color: '#FFFFFF' }}>
-        <Typography variant="body2" sx={{ fontSize: '13px' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1, bgcolor: '#1B6392', color: '#FFFFFF',fontFamily: "'Public Sans', sans-serif" }}>
+        <Typography variant="body2" sx={{ fontSize: '13px' ,fontFamily: "'Public Sans', sans-serif"}}>
           Welcome to Clicon online eCommerce store.
         </Typography>
 
@@ -219,12 +228,13 @@ const Navbar = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="body2" sx={{ fontSize: '13px', mr: 0.5 }}>Follow us:</Typography>
-            <img src={twitter} style={{ width: 14, cursor: 'pointer' }} alt="Twitter" />
-            <img src={instagram} style={{ width: 14, cursor: 'pointer' }} alt="Instagram" />
-            <img src={printrest} style={{ width: 14, cursor: 'pointer' }} alt="Pinterest" />
-            <img src={reddit} style={{ width: 14, cursor: 'pointer' }} alt="Reddit" />
-            <img src={youtube} style={{ width: 14, cursor: 'pointer' }} alt="YouTube" />
+            <Typography variant="body2" sx={{ fontSize: '13px', mr: 0.5 ,fontFamily: "'Public Sans', sans-serif"}}>Follow us:</Typography>
+            <img src={twitter}   style={{ width: 16, cursor: 'pointer',height:16 }} alt="Twitter" />
+            <img src={facebook} style={{ width: 16, cursor: 'pointer',height:16 }} alt="Facebook" />
+            <img src={printrest} style={{ width: 16, cursor: 'pointer',height:16 }} alt="Pinterest" />
+            <img src={reddit}    style={{ width: 16, cursor: 'pointer',height:16 }} alt="Reddit" />
+            <img src={youtube}   style={{ width: 16, cursor: 'pointer',height:16 }} alt="YouTube" />
+            <img src={instagram} style={{ width: 16, cursor: 'pointer',height:16 }} alt="Instagram" />
           </Box>
 
           <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} />
@@ -243,15 +253,15 @@ const Navbar = () => {
             onClick={() => navigate('/')}
             sx={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}
           >
-            <img src={logo} alt="Logo" style={{ width: 30 }} />
-            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block', color: 'white' } }}>CLICON</Typography>
+            <img src={logo} alt="Logo" style={{ width: 48,height:48}} />
+            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } ,fontWeight:700,fontFamily: "'Public Sans', sans-serif",fontSize:32}}>CLICON</Typography>
           </Box>
 
           {/* Search */}
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', px: 2 }}>
             <Search>
               <StyledInputBase placeholder="Search for anything..." />
-              <SearchIconWrapper><SearchIcon /></SearchIconWrapper>
+              <SearchIconWrapper><img src={magnifiying} alt="" /></SearchIconWrapper>
             </Search>
           </Box>
 
@@ -303,15 +313,7 @@ const Navbar = () => {
           }}
           onClick={handleCatClick}
         >
-          <Typography
-            variant="body2"
-            sx={{
-              mr: 1
-            }}
-          >
-            All Category
-          </Typography>
-
+          <Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1 ,fontFamily: "'Public Sans', sans-serif"}}>All Category</Typography>
           <KeyboardArrowDownIcon fontSize="small" />
         </Box>
 
@@ -625,46 +627,54 @@ const Navbar = () => {
           {/* Track Order → navigates to /track-order */}
           <Box
             onClick={() => navigate('/track-order')}
-            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}
+            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}
           >
-            <LocationOnOutlinedIcon fontSize="small" /> Track Order
+            <Box sx={{width:'24px', height:'24px'}}>
+              <img src={trackIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt='trackorder'/>
+              </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
+              Track Order            
+              </Typography>
           </Box>
 
-          <Box
-            component={Link}
-            to="/compare"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 0.5,
-              cursor: "pointer",
-              fontSize: "13px",
-              textDecoration: "none",
-              color: "inherit",
-              "&:hover": {
-                color: "#FA8232",
-              },
-            }}
-          >
-            <CompareArrowsIcon fontSize="small" />
-            Compare
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' }, fontWeight:400}}>
+            <Box sx={{width:'24px', height:'24px'}}>
+              <img src={compareIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Compare" />
+              </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
+              Compare           
+              </Typography>
+             
           </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
-            <HeadsetMicOutlinedIcon fontSize="small" /> Customer Support
+          <Box  onClick={() => navigate('/customer-support')}
+          sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}>
+            <Box sx={{width:'24px', height:'24px'}}>
+              <img src={supportIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Customer Support" /> 
+              </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
+              Customer Support          
+              </Typography>
+            
           </Box>
 
-          <Box
-            onClick={() => navigate('/help')}
-            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
-            <InfoOutlinedIcon fontSize="small" /> Need Help
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}>
+            <Box sx={{width:'24px', height:'24px'}}>
+              <img src={helpIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Need Help" />
+              </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
+              Need Help           
+              </Typography>
+            
           </Box>
 
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <CallOutlinedIcon sx={{ fontSize: '18px', color: '#191C1F' }} />
-          <Typography variant="body2" sx={{ fontWeight: 600, fontSize: '13px' }}>+1-202-555-0104</Typography>
+          <Box sx={{ width: '20px', height: '20px', objectFit: 'contain' }} >
+            <img src={callIcon} style={{width:'20px', height:'20px'}} alt="Call" />
+          </Box>    
+          <Typography variant="body2" sx={{ fontWeight: 600, fontSize: '15px',fontFamily: "'Public Sans', sans-serif",color:'#191C1F'}}>+1-202-555-0104</Typography>
         </Box>
       </Box>
 

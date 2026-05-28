@@ -50,8 +50,10 @@ const Categories = () => {
     <Container
       maxWidth={false}
       sx={{
-        width: '1285px',
-        margin: '0 auto'
+        maxWidth: '1000px',
+        mx: 'auto',
+        py: 5,
+        px: 2
       }}
     >
       <Box

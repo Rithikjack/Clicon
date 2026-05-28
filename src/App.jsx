@@ -1,11 +1,18 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import { BrowserRouter, Routes, Route } from '  react-router-dom'
+import './FootStyle.css'
 // Pages
 import HomePage from './Pages/HomePage'
 import OrderCompleted from './Pages/OrderCompleted'
+import NotFoundPage from './Pages/NotFoundPage'
+import CustomerSupportPage from './Pages/CustomerSupportPage'
 
-// Components — matching your exact folder structure
+// Account Pages
+import AccountLayout from './Pages/Account/AccountLayout'
+import DashboardPage from './Pages/Account/DashboardPage'
+import SettingsPage from './Pages/Account/SettingsPage'
+
+// Components
 import Navbar from './Components/Home/Navbar'
 import Footer from './Components/Home/Footer'
 import TrackOrderPage from './Components/Home/TrackOrderPage'
@@ -33,16 +40,19 @@ const PageLayout = ({ children }) => (
     <Footer />
   </>
 )
+import CardsAddressPage from './Pages/Account/CardsAddressPage'
+import OrderHistoryPage from './Pages/Account/OrderHistoryPage'
+import OrderDetailsPage from './Pages/Account/OrderDetailsPage'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* Home — has its own Offerbar + Navbar + Footer inside */}
+        {/* Home */}
         <Route path="/" element={<HomePage />} />
 
-        {/* Order Success — already wraps Navbar + Footer inside */}
+        {/* Order Success */}
         <Route path="/order-completed" element={<OrderCompleted />} />
 
         {/* Track Order */}
@@ -52,7 +62,42 @@ const App = () => {
             <>
               <Navbar />
               <TrackOrderPage />
-              <Footer showNewsletter={false} />  {/* ← just add this */}
+              <Footer showNewsletter={false} />
+
+            </>
+          }
+        />
+
+        {/* Customer Support */}
+        <Route
+          path="/customer-support"
+          element={
+            <>
+              <Navbar />
+              <CustomerSupportPage />
+              <Footer showNewsletter={false} />
+            </>
+          }
+        />
+
+        {/* ── Account Routes ── */}
+        <Route path="/account" element={<AccountLayout />}>
+          <Route index            element={<DashboardPage />} />
+          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="settings"  element={<SettingsPage />} />
+          <Route path="cards"     element={<CardsAddressPage />} /> 
+          <Route path="orders"       element={<OrderHistoryPage />} />        {/* ← add */}
+          <Route path="order-details" element={<OrderDetailsPage />} /> 
+        </Route>
+
+        {/* 404 — always last */}
+        <Route
+          path="*"
+          element={
+            <>
+              <Navbar />
+              <NotFoundPage />
+              <Footer showNewsletter={false} />
             </>
           }
         />
