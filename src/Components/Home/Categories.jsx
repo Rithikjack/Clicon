@@ -7,6 +7,8 @@ import {
 
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Container from '@mui/material/Container';
+
 
 
 import laptop from '../../assets/computer2.png';
@@ -45,132 +47,140 @@ const categories = [
 
 const Categories = () => {
   return (
-    <Box
+    <Container
+      maxWidth={false}
       sx={{
-        maxWidth: '1320px',
-        mx: 'auto',
-        py: 5,
-        px: 2
+        width: '1285px',
+        margin: '0 auto'
       }}
     >
-      {/* TITLE */}
-      <Typography
-        sx={{
-          textAlign: 'center',
-          fontSize: '32px',
-          fontWeight: 700,
-          mb: 4
-        }}
-      >
-        Shop with Categories
-      </Typography>
-
-      {/* CATEGORY SECTION */}
       <Box
         sx={{
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center'
+          maxWidth: '1320px',
+          mx: 'auto',
+          py: 5,
+          px: 2
         }}
       >
-        {/* LEFT BUTTON */}
-        <IconButton
+        {/* TITLE */}
+        <Typography
           sx={{
-            position: 'absolute',
-            left: '-20px',
-            zIndex: 2,
-            width: '42px',
-            height: '42px',
-            backgroundColor: '#FA8232',
-            color: '#fff',
-            '&:hover': {
-              backgroundColor: '#FA8232'
-            }
+            textAlign: 'center',
+            fontSize: '32px',
+            fontWeight: 700,
+            mb: 4
           }}
         >
-          <ArrowBackIosNewIcon sx={{ fontSize: '18px' }} />
-        </IconButton>
+          Shop with Categories
+        </Typography>
 
-        {/* CATEGORY CARDS */}
+        {/* CATEGORY SECTION */}
         <Box
           sx={{
-            width: '100%',
-            display: 'grid',
-            gridTemplateColumns: {
-              xs: 'repeat(2,1fr)',
-              sm: 'repeat(3,1fr)',
-              md: 'repeat(6,1fr)'
-            },
-            gap: 2
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center'
           }}
         >
-          {categories.map((item, index) => (
-            <Box
-              key={index}
-              sx={{
-                border: '1px solid #E4E7E9',
-                borderRadius: '4px',
-                py: 3,
-                px: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: '0.3s',
-                cursor: 'pointer',
+          {/* LEFT BUTTON */}
+          <IconButton
+            sx={{
+              position: 'absolute',
+              left: '-20px',
+              zIndex: 2,
+              width: '42px',
+              height: '42px',
+              backgroundColor: '#FA8232',
+              color: '#fff',
+              '&:hover': {
+                backgroundColor: '#FA8232'
+              }
+            }}
+          >
+            <ArrowBackIosNewIcon sx={{ fontSize: '18px' }} />
+          </IconButton>
 
-                '&:hover': {
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-                  transform: 'translateY(-5px)'
-                }
-              }}
-            >
-              {/* IMAGE */}
+          {/* CATEGORY CARDS */}
+          <Box
+            sx={{
+              width: '100%',
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: 'repeat(2,1fr)',
+                sm: 'repeat(3,1fr)',
+                md: 'repeat(6,1fr)'
+              },
+              gap: 2
+            }}
+          >
+            {categories.map((item, index) => (
               <Box
-                component="img"
-                src={item.image}
-                alt=""
+                key={index}
                 sx={{
-                  width: '100px',
-                  height: '100px',
-                  objectFit: 'contain',
-                  mb: 2
-                }}
-              />
+                  border: '1px solid #E4E7E9',
+                  borderRadius: '4px',
+                  py: 3,
+                  px: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: '0.3s',
+                  cursor: 'pointer',
 
-              {/* TITLE */}
-              <Typography
-                sx={{
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  textAlign: 'center'
+                  '&:hover': {
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+                    transform: 'translateY(-5px)'
+                  }
                 }}
               >
-                {item.title}
-              </Typography>
-            </Box>
-          ))}
-        </Box>
+                {/* IMAGE */}
+                <Box
+                  component="img"
+                  src={item.image}
+                  alt=""
+                  sx={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'contain',
+                    mb: 2
+                  }}
+                />
 
-        {/* RIGHT BUTTON */}
-        <IconButton
-          sx={{
-            position: 'absolute',
-            right: '-20px',
-            zIndex: 2,
-            width: '42px',
-            height: '42px',
-            backgroundColor: '#FA8232',
-            color: '#fff',
-            '&:hover': {
-              backgroundColor: '#FA8232'
-            }
-          }}
-        >
-          <ArrowForwardIosIcon sx={{ fontSize: '18px' }} />
-        </IconButton>
+                {/* TITLE */}
+                <Typography
+                  sx={{
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    textAlign: 'center'
+                  }}
+                >
+                  {item.title}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+
+          {/* RIGHT BUTTON */}
+          <IconButton
+            sx={{
+              position: 'absolute',
+              right: '-20px',
+              zIndex: 2,
+              width: '42px',
+              height: '42px',
+              backgroundColor: '#FA8232',
+              color: '#fff',
+              '&:hover': {
+                backgroundColor: '#FA8232'
+              }
+            }}
+          >
+            <ArrowForwardIosIcon sx={{ fontSize: '18px' }} />
+          </IconButton>
+        </Box>
       </Box>
-    </Box>
+    </Container>
   );
 };
 

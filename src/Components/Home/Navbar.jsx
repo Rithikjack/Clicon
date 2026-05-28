@@ -19,6 +19,10 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import SignInPopup from '../signin/SignInPopup';
 import ShoppingCartPopup from './ShoppingCartPopup';
+import Popover from '@mui/material/Popover';
+import Button from '@mui/material/Button';
+
+import { Link } from "react-router-dom";
 
 // Assets
 import logo from '../../assets/Mainlogo.png';
@@ -30,6 +34,29 @@ import youtube from '../../assets/Youtube.png';
 import cart from '../../assets/ShoppingCartSimple.png';
 import favoute from '../../assets/Heart.png';
 import user from '../../assets/User.png';
+import EastIcon from '@mui/icons-material/East';
+
+
+import phone1 from '../../assets/PS5.png';
+import phone2 from '../../assets/Camera.png';
+import phone3 from '../../assets/Phone.png';
+import Pho from '../../assets/homepod.png';
+
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: 'transparent',
+  ...theme.typography.body2,
+  boxShadow: 'none',
+  border: 'none',
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: (theme.vars ?? theme).palette.text.secondary,
+  ...theme.applyStyles('white', {
+    backgroundColor: 'transparent',
+  }),
+}));
 
 const categories = [
   "Computer & Laptop", "Computer Accessories", "SmartPhone", "Headphone",
@@ -85,6 +112,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const TopBarDropdown = ({ value, options, onSelect, color = '#fff' }) => {
   const [anchor, setAnchor] = useState(null);
+
 
   return (
     <>
@@ -157,6 +185,7 @@ const Navbar = () => {
   const [currency, setCurrency] = useState('USD');
   const [openSignIn, setOpenSignIn] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const [phoneAnchor, setPhoneAnchor] = useState(null);
 
   const cartItemCount = 2;
 
@@ -164,22 +193,38 @@ const Navbar = () => {
   const handleCatClose = () => setCatAnchor(null);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
 
+    <Box sx={{ flexGrow: 1 }}>
       {/* 1. Top Utility Bar */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1, bgcolor: '#1B6392', color: '#FFFFFF' }}>
         <Typography variant="body2" sx={{ fontSize: '13px' }}>
           Welcome to Clicon online eCommerce store.
         </Typography>
 
+        <Typography
+          component={Link}
+          to="/wish"
+          sx={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+        >
+          Wish
+        </Typography>
+
+        <Typography
+          component={Link}
+          to="/check"
+          sx={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+        >
+          Check
+        </Typography>
+
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="body2" sx={{ fontSize: '13px', mr: 0.5 }}>Follow us:</Typography>
-            <img src={twitter}   style={{ width: 14, cursor: 'pointer' }} alt="Twitter" />
+            <img src={twitter} style={{ width: 14, cursor: 'pointer' }} alt="Twitter" />
             <img src={instagram} style={{ width: 14, cursor: 'pointer' }} alt="Instagram" />
             <img src={printrest} style={{ width: 14, cursor: 'pointer' }} alt="Pinterest" />
-            <img src={reddit}    style={{ width: 14, cursor: 'pointer' }} alt="Reddit" />
-            <img src={youtube}   style={{ width: 14, cursor: 'pointer' }} alt="YouTube" />
+            <img src={reddit} style={{ width: 14, cursor: 'pointer' }} alt="Reddit" />
+            <img src={youtube} style={{ width: 14, cursor: 'pointer' }} alt="YouTube" />
           </Box>
 
           <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} />
@@ -199,7 +244,7 @@ const Navbar = () => {
             sx={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}
           >
             <img src={logo} alt="Logo" style={{ width: 30 }} />
-            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>CLICON</Typography>
+            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block', color: 'white' } }}>CLICON</Typography>
           </Box>
 
           {/* Search */}
@@ -216,7 +261,7 @@ const Navbar = () => {
             {/* Cart icon with badge */}
             <IconButton sx={{ p: 0 }} onClick={() => setOpenCart(true)}>
               <Badge
-               
+
               >
                 <img src={cart} style={{ width: 28 }} alt="Cart" />
               </Badge>
@@ -239,28 +284,338 @@ const Navbar = () => {
       {/* 3. Category & Support Bar */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1.5, borderBottom: '1px solid #e0e0e0', bgcolor: '#ffffff' }}>
         <Box
-          sx={{ display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', px: 2, py: 1, borderRadius: '4px', cursor: 'pointer', '&:hover': { bgcolor: '#ebebeb' } }}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            bgcolor: '#f5f5f5',
+            px: 2,
+            py: 1,
+            borderRadius: '4px',
+            cursor: 'pointer',
+            color: '#191C1F',
+            transition: '0.2s ease',
+            fontFamily: 'Public Sans, sans-serif',
+
+            '&:hover': {
+              bgcolor: 'orange',
+              color: 'white',
+            }
+          }}
           onClick={handleCatClick}
         >
-          <Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1 }}>All Category</Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              mr: 1
+            }}
+          >
+            All Category
+          </Typography>
+
           <KeyboardArrowDownIcon fontSize="small" />
         </Box>
 
+        {/* CATEGORY MENU */}
         <Menu
           anchorEl={catAnchor}
           open={Boolean(catAnchor)}
           onClose={handleCatClose}
-          PaperProps={{ sx: { width: '250px', mt: 1.5, borderRadius: '6px', border: '1px solid #E4E7E9' } }}
+          PaperProps={{
+            sx: {
+              width: '250px',
+              mt: 1.5,
+              borderRadius: '6px',
+              border: '1px solid #E4E7E9',
+              overflow: 'visible',
+            }
+          }}
         >
           {categories.map((cat) => (
-            <MenuItem
+            <Box
               key={cat}
-              onClick={handleCatClose}
-              sx={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', '&:hover': { bgcolor: '#FFF5EE', color: '#FA8232' } }}
+              sx={{ position: 'relative' }}
+              onMouseEnter={(e) => {
+                if (cat === 'SmartPhone') {
+                  setPhoneAnchor(e.currentTarget);
+                }
+              }}
+              onMouseLeave={() => {
+                setPhoneAnchor(null);
+              }}
             >
-              {cat}
-              {cat === 'SmartPhone' && <span style={{ color: '#929FA5' }}>›</span>}
-            </MenuItem>
+              <MenuItem
+                onClick={handleCatClose}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  fontSize: '13px',
+                  '&:hover': {
+                    bgcolor: '#FFF5EE',
+                    color: '#FA8232'
+                  }
+                }}
+              >
+                {cat}
+                {cat === 'SmartPhone' && (
+                  <span style={{ color: '#929FA5' }}>›</span>
+                )}
+              </MenuItem>
+
+              {/* SMARTPHONE POPOVER */}
+              {cat === 'SmartPhone' && (
+                <Popover
+                  open={Boolean(phoneAnchor)}
+                  anchorEl={phoneAnchor}
+                  onClose={() => setPhoneAnchor(null)}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  disableRestoreFocus
+                  PaperProps={{
+                    sx: {
+                      width: '700px',
+                      p: 2,
+                      borderRadius: '6px',
+                      border: '1px solid #E4E7E9',
+                      boxShadow: '0px 8px 24px rgba(0,0,0,0.08)',
+                    }
+                  }}
+                >
+                  <Box sx={{ display: 'flex', gap: 3 }}>
+
+                    {/* LEFT BRANDS */}
+                    <Box sx={{ width: '160px', marginTop: '20px', marginLeft: 2, alignContent: 'left' }}>
+                      {[
+                        'All',
+                        'iPhone',
+                        'Samsung',
+                        'Realme',
+                        'Xiaomi',
+                        'Oppo',
+                        'Vivo',
+                        'OnePlus',
+                        'Huawei',
+                      ].map((brand) => (
+                        <Typography
+                          key={brand}
+                          sx={{
+                            fontSize: '13px',
+                            py: 1.2,
+                            cursor: 'pointer',
+
+                            '&:hover': {
+                              color: '#FA8232',
+                              backgroundColor: '#F2F4F5'
+                            }
+                          }}
+                        >
+                          {brand}
+                        </Typography>
+                      ))}
+                    </Box>
+
+                    {/* FEATURED PRODUCTS */}
+                    <Box sx={{ width: '250px', ml: 10, mt: 2, marginLeft: '-30px' }}>
+
+                      <Typography
+                        sx={{
+                          fontSize: '14px',
+                          fontWeight: 700,
+                          mb: 2,
+
+                        }}
+                      >
+                        FEATURED PHONES
+                      </Typography>
+
+                      {[
+                        {
+                          image: phone1,
+                          name: 'Samsung Galaxy S21 5G',
+                          price: '$160'
+                        },
+                        {
+                          image: phone2,
+                          name: 'iPhone 14 Pro Max',
+                          price: '$220'
+                        },
+                        {
+                          image: phone3,
+                          name: 'OnePlus Nord CE',
+                          price: '$140'
+                        }
+                      ].map((item, index) => (
+                        <Box
+                          key={index}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 1.5,
+                            mb: 2,
+                            p: 1.2,
+                            borderRadius: '6px',
+                            border: '1px solid #E4E7E9',
+                            cursor: 'pointer',
+                            transition: '0.2s ease',
+                            bgcolor: '#fff',
+
+                            '&:hover': {
+                              border: '1px solid #FA8232',
+                              boxShadow: '0px 4px 12px rgba(250,130,50,0.15)',
+                              transform: 'translateY(-2px)',
+                            }
+                          }}
+                        >
+
+                          {/* PRODUCT IMAGE */}
+                          <Box
+                            component="img"
+                            src={item.image}
+                            alt={item.name}
+                            sx={{
+                              width: 65,
+                              height: 65,
+                              objectFit: 'contain',
+                              borderRadius: '4px',
+                              bgcolor: '#f8f8f8',
+                              p: 0.5
+                            }}
+                          />
+
+                          {/* PRODUCT INFO */}
+                          <Box>
+                            <Typography
+                              sx={{
+                                fontSize: '13px',
+                                fontWeight: 500,
+                                color: '#191C1F',
+                                mb: 0.5
+                              }}
+                            >
+                              {item.name}
+                            </Typography>
+
+                            <Typography
+                              sx={{
+                                fontSize: '12px',
+                                color: '#2DA5F3',
+                                fontWeight: 700
+                              }}
+                            >
+                              {item.price}
+                            </Typography>
+                          </Box>
+
+                        </Box>
+                      ))}
+
+                    </Box>
+
+                    {/* RIGHT OFFER BANNER */}
+                    <Box
+                      sx={{
+                        width: '220px',
+                        bgcolor: '#FDF1D6',
+                        borderRadius: '4px',
+                        p: 2,
+                        textAlign: 'center'
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={Pho}
+                        alt=""
+                        sx={{
+                          width: 120,
+                          mx: 'auto',
+                          mt: 1,
+                          p: 2
+                        }}
+                      />
+
+                      <Typography
+                        sx={{
+                          fontSize: '28px',
+                          fontWeight: 700,
+                          mb: 1,
+                          fontWidth: 'bold'
+                        }}
+                      >
+                        21% Discount
+                      </Typography>
+
+                      <Typography
+                        sx={{
+                          fontSize: '13px',
+                          color: '#5F6C72',
+                          mb: 2
+                        }}
+                      >
+                        Escape the noise, It’s time to hear the magic with Xiaomi Earbuds.
+                      </Typography>
+
+                      <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={0}>
+                          <Grid size={6}>
+                            <Item>
+                              <Typography
+                                sx={{
+                                  fontSize: '13px',
+                                  color: '#5F6C72',
+                                  mb: 0
+                                }}
+                              >
+                                Starting Price :
+                              </Typography>
+                            </Item>
+                          </Grid>
+
+                          <Grid size={6}>
+                            <Item sx={{ marginLeft: '0px' }}>
+                              <Typography
+                                sx={{
+                                  fontSize: '13px',
+                                  color: 'black',
+                                  mb: 2,
+                                  mt: -1,
+                                  backgroundColor: 'white',
+                                  border: 8,
+                                  borderColor: 'white',
+                                  fontWeight: 'bold',
+                                  fontFamily: 'Public Sans, sans-serif',
+                                }}
+                              >
+                                $99 USD
+                              </Typography>
+                            </Item>
+                          </Grid>
+                        </Grid>
+                      </Box>
+
+                      <Button
+                        variant="contained"
+                        sx={{
+                          width: '100%',
+                          bgcolor: '#FA8232',
+                          '&:hover': {
+                            bgcolor: '#de732d',
+                            borderRadius: 0
+                          }
+                        }}
+                      >
+                        SHOP NOW   < EastIcon sx={{ marginLeft: 1 }} />
+                      </Button>
+                    </Box>
+
+                  </Box>
+                </Popover>
+              )}
+            </Box>
           ))}
         </Menu>
 
@@ -275,15 +630,33 @@ const Navbar = () => {
             <LocationOnOutlinedIcon fontSize="small" /> Track Order
           </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
-            <CompareArrowsIcon fontSize="small" /> Compare
+          <Box
+            component={Link}
+            to="/compare"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 0.5,
+              cursor: "pointer",
+              fontSize: "13px",
+              textDecoration: "none",
+              color: "inherit",
+              "&:hover": {
+                color: "#FA8232",
+              },
+            }}
+          >
+            <CompareArrowsIcon fontSize="small" />
+            Compare
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
             <HeadsetMicOutlinedIcon fontSize="small" /> Customer Support
           </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
+          <Box
+            onClick={() => navigate('/help')}
+            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '13px', '&:hover': { color: '#FA8232' } }}>
             <InfoOutlinedIcon fontSize="small" /> Need Help
           </Box>
 

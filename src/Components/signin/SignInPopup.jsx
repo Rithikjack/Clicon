@@ -10,6 +10,7 @@ import {
   Modal,
   Link
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -41,6 +42,8 @@ const inputSx = {
 };
 
 const SignInPopup = ({ open, onClose }) => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [mode, setMode] = useState('signin'); // 'signin' | 'signup'
 
@@ -56,12 +59,18 @@ const SignInPopup = ({ open, onClose }) => {
 
   const handleSubmit = () => {
     if (mode === 'signin') {
-      console.log('Sign In:', { email: form.email, password: form.password });
+      console.log('Sign In:', {
+        email: form.email,
+        password: form.password
+      });
+
+      navigate('/login'); // route after login
     } else {
       console.log('Sign Up:', form);
+
+      navigate('/signup'); // optional signup route
     }
   };
-
   const switchMode = () => {
     setMode((prev) => (prev === 'signin' ? 'signup' : 'signin'));
     setForm({ name: '', email: '', password: '', confirm: '' });
