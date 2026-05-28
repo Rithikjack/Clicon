@@ -51,7 +51,7 @@ const HeroSection = () => {
     >
       {/* HERO SECTION */}
       <Grid container spacing={2}>
-        
+
         {/* LEFT BANNER */}
         <Grid item xs={12} md={8}>
           <Box
@@ -62,8 +62,9 @@ const HeroSection = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              height: '100%',
-              position: 'relative'
+              height: '84%',
+              position: 'relative',
+              width: '100%'
             }}
           >
             {/* TEXT */}
@@ -172,7 +173,9 @@ const HeroSection = () => {
                   padding: '20px',
                   position: 'relative',
                   overflow: 'hidden',
-                  minHeight: '200px'
+                  minHeight: '200px',
+                  width: '68%',
+                  marginLeft: '100px'
                 }}
               >
                 <Typography
@@ -257,7 +260,9 @@ const HeroSection = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  minHeight: '180px'
+                  minHeight: '180px',
+                  gap: 2,
+                  marginLeft:'100px'
                 }}
               >
                 {/* IMAGE */}
@@ -268,12 +273,15 @@ const HeroSection = () => {
                   sx={{
                     width: '140px',
                     height: '140px',
-                    objectFit: 'contain'
+                    objectFit: 'contain',
+                    flexShrink: 0,
+                    marginLeft: '10px',
+
                   }}
                 />
 
                 {/* TEXT */}
-                <Box>
+                <Box sx={{ flex: 1 }}>
                   <Typography
                     sx={{
                       fontSize: '22px',
@@ -374,7 +382,9 @@ const HeroSection = () => {
                       fontSize: '13px',
                       fontWeight: 700,
                       color: '#191C1F',
-                      mb: 0.5
+                      mb: 0.5,
+                      width:200,
+                      px:0.5
                     }}
                   >
                     {item.title}
@@ -383,7 +393,7 @@ const HeroSection = () => {
                   <Typography
                     sx={{
                       fontSize: '12px',
-                      color: '#77878F'
+                      color: '#77878F',
                     }}
                   >
                     {item.sub}
