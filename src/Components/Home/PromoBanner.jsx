@@ -6,36 +6,29 @@ import {
   Container,
 } from '@mui/material';
 
-// Images
 import homepod from '../../assets/xiaomi.png';
 import xiaomi from '../../assets/homepod.png';
+import shopArrow from '../../assets/Orangearrow.png';
 
 const PromoBanner = () => {
   return (
     <Container
       maxWidth={false}
       sx={{
-        width: '1285px',
-        margin: '0 auto'
+        px: { xs: '12px', sm: '24px', md: '48px', lg: '120px' }
       }}
     >
       <Box
         sx={{
-          maxWidth: '1320px',
-          mx: 'auto',
-          py: 5,
-          px: 2
+          py: { xs: 2, md: 4 },
+          px: { xs: '8px', sm: '16px', md: '32px', lg: '150px' }
         }}
       >
-        {/* MAIN ROW */}
         <Box
           sx={{
             display: 'flex',
-            gap: 2,
-            flexWrap: {
-              xs: 'wrap',
-              md: 'nowrap'
-            }
+            gap: { xs: 1.5, md: 2 },
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
 
@@ -45,27 +38,27 @@ const PromoBanner = () => {
               flex: 1,
               backgroundColor: '#F2F4F5',
               borderRadius: '6px',
-              height: '360px',
-              px: 4,
+              height: { xs: '160px', sm: '200px', md: '240px', lg: '360px' },
+              px: { xs: 2, sm: 2.5, md: 3, lg: 0 },
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              overflow: 'hidden'
+              overflow: 'hidden',
             }}
           >
-            {/* TEXT */}
-            <Box sx={{ maxWidth: '240px' }}>
+            <Box sx={{ maxWidth: { xs: '52%', lg: '240px' }, zIndex: 2 }}>
               <Box
                 sx={{
                   display: 'inline-block',
                   backgroundColor: '#2DA5F3',
                   color: '#fff',
-                  px: 1.5,
-                  py: 0.5,
-                  fontSize: '12px',
+                  px: { xs: 1, lg: 1.5 },
+                  py: 0.3,
+                  fontSize: { xs: '8px', sm: '9px', md: '10px', lg: '12px' },
                   fontWeight: 700,
                   borderRadius: '2px',
-                  mb: 2
+                  mb: { xs: 0.5, md: 1, lg: 2 },
+                  whiteSpace: 'nowrap',
                 }}
               >
                 INTRODUCING
@@ -73,11 +66,11 @@ const PromoBanner = () => {
 
               <Typography
                 sx={{
-                  fontSize: '42px',
+                  fontSize: { xs: '13px', sm: '16px', md: '20px', lg: '42px' },
                   fontWeight: 700,
                   lineHeight: 1.2,
                   color: '#191C1F',
-                  mb: 2
+                  mb: { xs: 0.5, md: 1, lg: 2 },
                 }}
               >
                 New Apple
@@ -88,10 +81,10 @@ const PromoBanner = () => {
               <Typography
                 sx={{
                   color: '#5F6C72',
-                  fontSize: '15px',
-                  lineHeight: '24px',
-                  mb: 3,
-                  width: 'auto'
+                  fontSize: { xs: '9px', sm: '10px', md: '11px', lg: '15px' },
+                  lineHeight: { xs: '14px', md: '18px', lg: '24px' },
+                  mb: { xs: 1, md: 1.5, lg: 3 },
+                  display: { xs: 'none', sm: 'block' },
                 }}
               >
                 Jam-packed with innovation, HomePod mini delivers unexpectedly.
@@ -100,32 +93,40 @@ const PromoBanner = () => {
               <Button
                 variant="contained"
                 sx={{
-                  marginTop: -2,
                   backgroundColor: '#FA8232',
-                  px: 3,
-                  py: 1,
+                  px: { xs: 1, sm: 1.5, md: 2, lg: 3 },
+                  py: { xs: 0.4, sm: 0.5, md: 0.7, lg: 1 },
+                  fontSize: { xs: '8px', sm: '9px', md: '11px', lg: '14px' },
                   fontWeight: 600,
                   boxShadow: 'none',
-                  '&:hover': {
-                    backgroundColor: '#e76f1f',
-                    boxShadow: 'none',
-
-                  }
+                  minWidth: 0,
+                  lineHeight: 1.4,
+                  '&:hover': { backgroundColor: '#e76f1f', boxShadow: 'none' },
                 }}
               >
-                SHOP NOW →
+                SHOP NOW
+                <Box
+                  component="img"
+                  src={shopArrow}
+                  alt="arrow"
+                  sx={{
+                    ml: 0.5,
+                    width: { xs: '8px', sm: '10px', md: '12px', lg: '18px' },
+                    height: { xs: '7px', sm: '8px', md: '10px', lg: '14px' },
+                    objectFit: 'contain',
+                  }}
+                />
               </Button>
             </Box>
 
-            {/* IMAGE */}
             <Box
               component="img"
               src={homepod}
-              alt=""
+              alt="Apple Homepod Mini"
               sx={{
-                width: '230px',
-                height: '240px',
-                objectFit: 'contain'
+                width: { xs: '80px', sm: '110px', md: '150px', lg: '230px' },
+                height: { xs: '80px', sm: '110px', md: '150px', lg: '240px' },
+                objectFit: 'contain',
               }}
             />
           </Box>
@@ -136,28 +137,28 @@ const PromoBanner = () => {
               flex: 1,
               backgroundColor: '#191C1F',
               borderRadius: '6px',
-              height: '360px',
-              px: 4,
+              height: { xs: '160px', sm: '200px', md: '240px', lg: '360px' },
+              px: { xs: 2, sm: 2.5, md: 3, lg: 4 },
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
             }}
           >
-            {/* TEXT */}
-            <Box sx={{ maxWidth: '260px', zIndex: 2 }}>
+            <Box sx={{ maxWidth: { xs: '52%', lg: '260px' }, zIndex: 2 }}>
               <Box
                 sx={{
                   display: 'inline-block',
                   backgroundColor: '#EFD33D',
                   color: '#191C1F',
-                  px: 1.5,
-                  py: 0.5,
-                  fontSize: '12px',
+                  px: { xs: 1, lg: 1.5 },
+                  py: 0.3,
+                  fontSize: { xs: '8px', sm: '9px', md: '10px', lg: '12px' },
                   fontWeight: 700,
                   borderRadius: '2px',
-                  mb: 2
+                  mb: { xs: 0.5, md: 1, lg: 2 },
+                  whiteSpace: 'nowrap',
                 }}
               >
                 INTRODUCING NEW
@@ -165,11 +166,11 @@ const PromoBanner = () => {
 
               <Typography
                 sx={{
-                  fontSize: '40px',
+                  fontSize: { xs: '12px', sm: '15px', md: '19px', lg: '40px' },
                   fontWeight: 700,
                   lineHeight: 1.2,
                   color: '#fff',
-                  mb: 2
+                  mb: { xs: 0.5, md: 1, lg: 2 },
                 }}
               >
                 Xiaomi Mi 11 Ultra
@@ -180,54 +181,64 @@ const PromoBanner = () => {
               <Typography
                 sx={{
                   color: '#ADB7BC',
-                  fontSize: '15px',
-                  lineHeight: '24px',
-                  mb: 3
+                  fontSize: { xs: '9px', sm: '10px', md: '11px', lg: '15px' },
+                  lineHeight: { xs: '14px', md: '18px', lg: '24px' },
+                  mb: { xs: 1, md: 1.5, lg: 3 },
+                  display: { xs: 'none', sm: 'block' },
                 }}
               >
-                *Data provided by internal laboratories.
-                Industry measurement.
+                *Data provided by internal laboratories. Industry measurement.
               </Typography>
 
               <Button
                 variant="contained"
                 sx={{
                   backgroundColor: '#FA8232',
-                  px: 3,
-                  py: 1.3,
+                  px: { xs: 1, sm: 1.5, md: 2, lg: 3 },
+                  py: { xs: 0.4, sm: 0.5, md: 0.7, lg: 1.3 },
+                  fontSize: { xs: '8px', sm: '9px', md: '11px', lg: '14px' },
                   fontWeight: 600,
                   boxShadow: 'none',
-                  '&:hover': {
-                    backgroundColor: '#e76f1f',
-                    boxShadow: 'none'
-                  }
+                  minWidth: 0,
+                  lineHeight: 1.4,
+                  '&:hover': { backgroundColor: '#e76f1f', boxShadow: 'none' },
                 }}
               >
-                SHOP NOW →
+                SHOP NOW
+                <Box
+                  component="img"
+                  src={shopArrow}
+                  alt="arrow"
+                  sx={{
+                    ml: 0.5,
+                    width: { xs: '8px', sm: '10px', md: '12px', lg: '18px' },
+                    height: { xs: '7px', sm: '8px', md: '10px', lg: '14px' },
+                    objectFit: 'contain',
+                  }}
+                />
               </Button>
             </Box>
 
-            {/* IMAGE */}
             <Box
               component="img"
               src={xiaomi}
-              alt=""
+              alt="Xiaomi Mi 11 Ultra"
               sx={{
-                width: '280px',
-                height: '280px',
+                width: { xs: '80px', sm: '120px', md: '160px', lg: '280px' },
+                height: { xs: '80px', sm: '120px', md: '160px', lg: '280px' },
                 objectFit: 'contain',
-                zIndex: 2
+                zIndex: 2,
               }}
             />
 
-            {/* PRICE */}
+            {/* PRICE BADGE */}
             <Box
               sx={{
                 position: 'absolute',
-                top: 20,
-                right: 20,
-                width: '90px',
-                height: '90px',
+                top: { xs: 8, sm: 12, md: 14, lg: 20 },
+                right: { xs: 8, sm: 12, md: 14, lg: 20 },
+                width: { xs: '40px', sm: '52px', md: '62px', lg: '90px' },
+                height: { xs: '40px', sm: '52px', md: '62px', lg: '90px' },
                 borderRadius: '50%',
                 backgroundColor: '#2DA5F3',
                 display: 'flex',
@@ -235,8 +246,8 @@ const PromoBanner = () => {
                 justifyContent: 'center',
                 color: '#fff',
                 fontWeight: 700,
-                fontSize: '24px',
-                zIndex: 3
+                fontSize: { xs: '10px', sm: '13px', md: '16px', lg: '24px' },
+                zIndex: 3,
               }}
             >
               $590

@@ -25,6 +25,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import shopArrow from '../../assets/Orangearrow.png'
 
 // ── Custom orange stepper connector ──
 const OrangeConnector = styled(StepConnector)(() => ({
@@ -132,7 +133,7 @@ const TrackOrderPage = () => {
     <Box sx={{ bgcolor: '#F2F4F5', minHeight: '80vh' }}>
 
       {/* ── Breadcrumb ── */}
-      <Box sx={{ bgcolor: '#fff', px: { xs: 2, md: 6 }, py: 1.5, borderBottom: '1px solid #E4E7E9' }}>
+      <Box sx={{ bgcolor: '#fff', px: { xs: 2, md: 6 }, py: 1.5, borderBottom: '1px solid #E4E7E9', px: 18 }}>
         <Breadcrumbs
           separator={<NavigateNextIcon sx={{ fontSize: '14px', color: '#929FA5' }} />}
         >
@@ -149,15 +150,21 @@ const TrackOrderPage = () => {
       </Box>
 
       {/* ── Main Content ── */}
-      <Box sx={{ px: { xs: 2, md: 6 }, py: 4 }}>
+      <Box
+        sx={{
+          px: { xs: 2, sm: 4, md: 10, lg: '120px' },
+          py: 5,
+          bgcolor: '#fff',
+          minHeight: '100vh'
+        }}
+      >
 
         {/* Track Form Card */}
         <Paper
           variant="outlined"
           sx={{
-            borderRadius: '8px',
-            borderColor: '#E4E7E9',
-            borderStyle: 'dashed',
+            minHeight: '350px',
+            border: 'none',
             p: { xs: 3, md: 4 },
             mb: 3,
             bgcolor: '#fff',
@@ -204,7 +211,7 @@ const TrackOrderPage = () => {
           </Box>
 
           {/* Helper text */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 3 }}>
             <InfoOutlinedIcon sx={{ fontSize: '14px', color: '#2DA5F3' }} />
             <Typography sx={{ fontSize: '12px', color: '#5F6C73' }}>
               Order ID that we sended to your in your email address.
@@ -217,29 +224,36 @@ const TrackOrderPage = () => {
               {error}
             </Typography>
           )}
+
+          <Button
+            variant="contained"
+            onClick={handleTrack}
+            sx={{
+              height: '48px',
+              px: 4,
+              bgcolor: '#FA8232',
+              color: '#fff',
+              fontWeight: 700,
+              fontSize: '14px',
+              letterSpacing: '0.5px',
+              borderRadius: '6px',
+              boxShadow: 'none',
+              mb: 4,
+              '&:hover': { bgcolor: '#e07020', boxShadow: 'none' },
+            }}
+          >
+            TRACK ORDER
+            <Box
+              component="img"
+              src={shopArrow}
+              alt="arrow"
+              sx={{ width: { xs: '14px', sm: '16px', md: '18px' }, height: { xs: '12px', sm: '13px', md: '14px' }, objectFit: 'contain' }}
+            />
+          </Button>
         </Paper>
 
-        {/* Track Button */}
-        <Button
-          variant="contained"
-          endIcon={<ArrowForwardIcon />}
-          onClick={handleTrack}
-          sx={{
-            height: '48px',
-            px: 4,
-            bgcolor: '#FA8232',
-            color: '#fff',
-            fontWeight: 700,
-            fontSize: '14px',
-            letterSpacing: '0.5px',
-            borderRadius: '6px',
-            boxShadow: 'none',
-            mb: 4,
-            '&:hover': { bgcolor: '#e07020', boxShadow: 'none' },
-          }}
-        >
-          TRACK ORDER
-        </Button>
+
+
 
         {/* ── Result Card ── */}
         {result && (
@@ -310,10 +324,10 @@ const TrackOrderPage = () => {
                 {result.status === 3
                   ? 'Your order has been delivered!'
                   : result.status === 2
-                  ? 'Your order is on the way!'
-                  : result.status === 1
-                  ? 'Your order is being packed.'
-                  : 'Order placed successfully!'}
+                    ? 'Your order is on the way!'
+                    : result.status === 1
+                      ? 'Your order is being packed.'
+                      : 'Order placed successfully!'}
               </Typography>
             </Box>
           </Paper>

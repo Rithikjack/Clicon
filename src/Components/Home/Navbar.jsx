@@ -88,7 +88,7 @@ const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: '2px',
   backgroundColor: '#ffffff',
-  height: '45px',
+  height: '35px',
   display: 'flex',
   alignItems: 'center',
   marginRight: theme.spacing(2),
@@ -204,119 +204,55 @@ const Navbar = () => {
   return (
 
     <Box sx={{ flexGrow: 1 }}>
-      {/* 1. Top Utility Bar */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1, bgcolor: '#1B6392', color: '#FFFFFF', fontFamily: "'Public Sans', sans-serif" }}>
-        <Typography variant="body2" sx={{ fontSize: '13px', fontFamily: "'Public Sans', sans-serif" }}>
-          Welcome to Clicon online eCommerce store.
-        </Typography>
-{/* 
+
+  {/* 1. Top Utility Bar */}
+  <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 1,
+      px: { xs: 2, sm: 3, md: 6, lg: '150px' },
+      py: 1,
+      bgcolor: '#1B6392',
+      color: '#FFFFFF',
+      fontFamily: "'Public Sans', sans-serif"
+    }}
+  >
+    <Typography
+      variant="body2"
+      sx={{
+        fontSize: '13px',
+        fontFamily: "'Public Sans', sans-serif",
+        textAlign: { xs: 'center', sm: 'left' },
+        width: { xs: '100%', md: 'auto' }
+      }}
+    >
+      Welcome to Clicon online eCommerce store.
+    </Typography>
+
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 2.5,
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        width: { xs: '100%', md: 'auto' }
+      }}
+    >
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', justifyContent: 'center' }}>
         <Typography
-          component={Link}
-          to="/his"
-          sx={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
-        >
-          Wish
-        </Typography> */}
-
-        {/* <Typography
-          component={Link}
-          to="/check"
-          sx={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
-        >
-          Check
-        </Typography>  */}
-
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="body2" sx={{ fontSize: '13px', mr: 0.5, fontFamily: "'Public Sans', sans-serif" }}>Follow us:</Typography>
-            <img src={twitter} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Twitter" />
-            <img src={facebook} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Facebook" />
-            <img src={printrest} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Pinterest" />
-            <img src={reddit} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Reddit" />
-            <img src={youtube} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="YouTube" />
-            <img src={instagram} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Instagram" />
-          </Box>
-
-          <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} />
-          <TopBarDropdown value={language} options={languages} onSelect={setLanguage} />
-          <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} />
-          <TopBarDropdown value={currency} options={currencies} onSelect={setCurrency} />
-        </Box>
-      </Box>
-
-      {/* 2. Main Navigation Bar */}
-      <AppBar position="static" sx={{ background: '#1B6392', boxShadow: 'none' }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-
-          {/* Logo */}
-          <Box
-            onClick={() => navigate('/')}
-            sx={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}
-          >
-            <img src={logo} alt="Logo" style={{ width: 48, height: 48 }} />
-            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' }, fontWeight: 700, fontFamily: "'Public Sans', sans-serif", fontSize: 32 }}>CLICON</Typography>
-          </Box>
-
-          {/* Search */}
-          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', px: 2 }}>
-            <Search>
-              <StyledInputBase placeholder="Search for anything..." />
-              <SearchIconWrapper><img src={magnifiying} alt="" /></SearchIconWrapper>
-            </Search>
-          </Box>
-
-          {/* Icons */}
-          <Box sx={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-
-            {/* Cart icon with badge */}
-            <IconButton sx={{ p: 0 }} onClick={() => setOpenCart(true)}>
-              <Badge
-
-              >
-                <img src={cart} style={{ width: 28 }} alt="Cart" />
-              </Badge>
-            </IconButton>
-
-            {/* Wishlist */}
-            <IconButton sx={{ p: 0 }}>
-              <img src={favoute} style={{ width: 24 }} alt="Wishlist" />
-            </IconButton>
-
-            {/* Account */}
-            <IconButton sx={{ p: 0 }} onClick={() => setOpenSignIn(true)}>
-              <img src={user} style={{ width: 24 }} alt="Account" />
-            </IconButton>
-
-          </Box>
-        </Toolbar>
-      </AppBar>
-
-      {/* 3. Category & Support Bar */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1.5, borderBottom: '1px solid #e0e0e0', bgcolor: '#ffffff' }}>
-        <Box
+          variant="body2"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            bgcolor: '#f5f5f5',
-            px: 2,
-            py: 1,
-            borderRadius: '4px',
-            cursor: 'pointer',
-            color: '#191C1F',
-            transition: '0.2s ease',
-            fontFamily: 'Public Sans, sans-serif',
-
-            '&:hover': {
-              bgcolor: 'orange',
-              color: 'white',
-            }
+            fontSize: '13px',
+            mr: 0.5,
+            fontFamily: "'Public Sans', sans-serif"
           }}
-          onClick={handleCatClick}
         >
-          <Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1, fontFamily: "'Public Sans', sans-serif" }}>All Category</Typography>
-          <KeyboardArrowDownIcon fontSize="small" />
-        </Box>
-
+          Follow us:
+        </Typography>
         {/* CATEGORY MENU */}
         <Menu
           anchorEl={catAnchor}
@@ -697,11 +633,293 @@ const Navbar = () => {
         </Box>
       </Box>
 
-      {/* Popups */}
-      <SignInPopup open={openSignIn} onClose={() => setOpenSignIn(false)} />
-      <ShoppingCartPopup open={openCart} onClose={() => setOpenCart(false)} />
+      <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} />
+
+      <TopBarDropdown value={language} options={languages} onSelect={setLanguage} />
+      <TopBarDropdown value={currency} options={currencies} onSelect={setCurrency} />
+    </Box>
+  </Box>
+
+  <Box sx={{ width: '100%', height: '1px', bgcolor: '#74a0bc' }} />
+
+  {/* 2. Main Navigation Bar */}
+  <AppBar
+    position="static"
+    sx={{
+      background: '#1B6392',
+      boxShadow: 'none',
+      px: { xs: 1, sm: 2, md: 4, lg: '120px' }
+    }}
+  >
+    <Toolbar
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: 2,
+        flexWrap: { xs: 'wrap', md: 'nowrap' },
+        py: { xs: 1, md: 0 }
+      }}
+    >
+
+      {/* Logo */}
+      <Box
+        onClick={() => navigate('/')}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        <img src={logo} alt="Logo" style={{ width: 48, height: 48 }} />
+
+        <Typography
+          variant="h6"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            fontWeight: 700,
+            fontFamily: "'Public Sans', sans-serif",
+            fontSize: { xs: 22, sm: 26, md: 32 }
+          }}
+        >
+          CLICON
+        </Typography>
+      </Box>
+
+      {/* Search */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          px: { xs: 0, sm: 2 },
+          width: { xs: '100%', md: 'auto' },
+          order: { xs: 3, md: 2 }
+        }}
+      >
+        <Search>
+          <StyledInputBase placeholder="Search for anything..." />
+          <SearchIconWrapper>
+            <img src={magnifiying} alt="" />
+          </SearchIconWrapper>
+        </Search>
+      </Box>
+
+      {/* Icons */}
+      <Box
+        sx={{
+          display: 'flex',
+          gap: { xs: '10px', sm: '15px' },
+          alignItems: 'center',
+          order: { xs: 2, md: 3 }
+        }}
+      >
+
+        <IconButton sx={{ p: 0 }} onClick={() => setOpenCart(true)}>
+          <Badge>
+            <img src={cart} style={{ width: 28 }} alt="Cart" />
+          </Badge>
+        </IconButton>
+
+        <IconButton sx={{ p: 0 }}>
+          <img src={favoute} style={{ width: 24 }} alt="Wishlist" />
+        </IconButton>
+
+        <IconButton sx={{ p: 0 }} onClick={() => setOpenSignIn(true)}>
+          <img src={user} style={{ width: 24 }} alt="Account" />
+        </IconButton>
+      </Box>
+
+    </Toolbar>
+  </AppBar>
+
+  {/* 3. Category & Support Bar */}
+  <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 2,
+      py: 1.5,
+      borderBottom: '1px solid #e0e0e0',
+      bgcolor: '#ffffff',
+      px: { xs: 2, sm: 3, md: 5, lg: '150px' }
+    }}
+  >
+
+    {/* Category Button */}
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        bgcolor: '#f5f5f5',
+        px: 2,
+        py: 1,
+        borderRadius: '4px',
+        cursor: 'pointer',
+        color: '#191C1F',
+        transition: '0.2s ease',
+        fontFamily: 'Public Sans, sans-serif',
+
+        '&:hover': {
+          bgcolor: 'orange',
+          color: 'white',
+        }
+      }}
+      onClick={handleCatClick}
+    >
+      <Typography
+        variant="body2"
+        sx={{
+          fontWeight: 'bold',
+          mr: 1,
+          fontFamily: "'Public Sans', sans-serif"
+        }}
+      >
+        All Category
+      </Typography>
+
+      <KeyboardArrowDownIcon fontSize="small" />
+    </Box>
+
+    {/* Nav Links */}
+    <Box
+      sx={{
+        display: 'flex',
+        gap: { xs: 1.5, md: 3 },
+        alignItems: 'center',
+        color: '#5f6c73',
+        flexWrap: 'wrap',
+        justifyContent: { xs: 'center', md: 'flex-start' }
+      }}
+    >
+
+      {/* Track Order */}
+      <Box
+        onClick={() => navigate('/track-order')}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 0.5,
+          cursor: 'pointer',
+          '&:hover': { color: '#FA8232' }
+        }}
+      >
+        <img src={trackIcon} style={{ width: '20px', height: '20px' }} alt="trackorder" />
+
+        <Typography
+          sx={{
+            fontSize: '14px',
+            display: { xs: 'none', sm: 'block' }
+          }}
+        >
+          Track Order
+        </Typography>
+      </Box>
+
+      {/* Compare */}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 0.5,
+          cursor: 'pointer',
+          '&:hover': { color: '#FA8232' }
+        }}
+      >
+        <img src={compareIcon} style={{ width: '20px', height: '20px' }} alt="Compare" />
+
+        <Typography
+          sx={{
+            fontSize: '14px',
+            display: { xs: 'none', sm: 'block' }
+          }}
+        >
+          Compare
+        </Typography>
+      </Box>
+
+      {/* Customer Support */}
+      <Box
+        onClick={() => navigate('/customer-support')}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 0.5,
+          cursor: 'pointer',
+          '&:hover': { color: '#FA8232' }
+        }}
+      >
+        <img src={supportIcon} style={{ width: '20px', height: '20px' }} alt="support" />
+
+        <Typography
+          sx={{
+            fontSize: '14px',
+            display: { xs: 'none', sm: 'block' }
+          }}
+        >
+          Customer Support
+        </Typography>
+      </Box>
+
+      {/* Need Help */}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 0.5,
+          cursor: 'pointer',
+          '&:hover': { color: '#FA8232' }
+        }}
+      >
+        <img src={helpIcon} style={{ width: '20px', height: '20px' }} alt="help" />
+
+        <Typography
+          sx={{
+            fontSize: '14px',
+            display: { xs: 'none', sm: 'block' }
+          }}
+        >
+          Need Help
+        </Typography>
+      </Box>
 
     </Box>
+
+    {/* Phone */}
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+        width: { xs: '100%', md: 'auto' },
+        justifyContent: { xs: 'center', md: 'flex-end' }
+      }}
+    >
+      <img src={callIcon} style={{ width: '20px', height: '20px' }} alt="Call" />
+
+      <Typography
+        variant="body2"
+        sx={{
+          fontWeight: 600,
+          fontSize: '15px',
+          fontFamily: "'Public Sans', sans-serif",
+          color: '#191C1F'
+        }}
+      >
+        +1-202-555-0104
+      </Typography>
+    </Box>
+
+  </Box>
+
+  {/* Popups */}
+  <SignInPopup open={openSignIn} onClose={() => setOpenSignIn(false)} />
+  <ShoppingCartPopup open={openCart} onClose={() => setOpenCart(false)} />
+
+</Box>
   );
 };
 
