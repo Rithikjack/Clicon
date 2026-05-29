@@ -85,12 +85,20 @@ export default function ShoppingCart() {
   return (
     <Box sx={{ bgcolor: "white", minHeight: "100vh" }}>
       <Navbar />
+
       {/* Breadcrumb */}
       <Box
         sx={{
           bgcolor: "#FFFFFF",
           borderBottom: "1px solid #E4E7E9",
-          px: 14,
+
+          px: {
+            xs: 2,
+            sm: 4,
+            md: 8,
+            lg: 14,
+          },
+
           py: 2,
         }}
       >
@@ -99,6 +107,7 @@ export default function ShoppingCart() {
             display: "flex",
             alignItems: "center",
             gap: 1,
+            flexWrap: "wrap",
           }}
         >
           <HomeOutlinedIcon
@@ -134,24 +143,43 @@ export default function ShoppingCart() {
           maxWidth: "1200px",
           mx: "auto",
           mt: 7,
+
           display: "flex",
+
+          flexDirection: {
+            xs: "column",
+            lg: "row",
+          },
+
           gap: 3,
           alignItems: "flex-start",
-          mb: 10
+          mb: 10,
+
+          px: {
+            xs: 2,
+            sm: 3,
+            md: 4,
+          },
         }}
       >
         {/* LEFT SECTION */}
         <Box
           sx={{
             flex: 1,
+            width: "100%",
             bgcolor: "#FFFFFF",
             border: "1px solid #E4E7E9",
+            overflowX: "auto",
           }}
         >
           {/* Title */}
           <Typography
             sx={{
-              fontSize: "22px",
+              fontSize: {
+                xs: "18px",
+                md: "22px",
+              },
+
               fontWeight: 600,
               px: 3,
               py: 2,
@@ -163,14 +191,20 @@ export default function ShoppingCart() {
           {/* Table Header */}
           <Box
             sx={{
-              display: "grid",
+              display: {
+                xs: "none",
+                md: "grid",
+              },
+
               gridTemplateColumns:
                 "2.8fr 1fr 1.4fr 1fr",
+
               px: 3,
               py: 1.5,
               bgcolor: "#F2F4F5",
               borderTop: "1px solid #E4E7E9",
               borderBottom: "1px solid #E4E7E9",
+              minWidth: "850px",
             }}
           >
             <Typography
@@ -219,13 +253,33 @@ export default function ShoppingCart() {
             <Box
               key={item.id}
               sx={{
-                display: "grid",
+                display: {
+                  xs: "flex",
+                  md: "grid",
+                },
+
+                flexDirection: "column",
+
                 gridTemplateColumns:
                   "2.8fr 1fr 1.4fr 1fr",
-                alignItems: "center",
+
+                alignItems: {
+                  xs: "flex-start",
+                  md: "center",
+                },
+
+                gap: {
+                  xs: 2,
+                  md: 0,
+                },
+
                 px: 3,
                 py: 3,
                 borderBottom: "1px solid #E4E7E9",
+
+                minWidth: {
+                  md: "850px",
+                },
               }}
             >
               {/* Product */}
@@ -234,6 +288,7 @@ export default function ShoppingCart() {
                   display: "flex",
                   alignItems: "center",
                   gap: 2,
+                  width: "100%",
                 }}
               >
                 <IconButton
@@ -242,6 +297,7 @@ export default function ShoppingCart() {
                     width: 22,
                     height: 22,
                     border: "1px solid #EE5858",
+                    flexShrink: 0,
                   }}
                 >
                   <CloseIcon
@@ -257,18 +313,35 @@ export default function ShoppingCart() {
                   src={item.image}
                   alt={item.name}
                   sx={{
-                    width: 70,
-                    height: 70,
+                    width: {
+                      xs: 60,
+                      sm: 70,
+                    },
+
+                    height: {
+                      xs: 60,
+                      sm: 70,
+                    },
+
                     objectFit: "contain",
+                    flexShrink: 0,
                   }}
                 />
 
                 <Typography
                   sx={{
-                    fontSize: "14px",
+                    fontSize: {
+                      xs: "13px",
+                      sm: "14px",
+                    },
+
                     color: "#191C1F",
                     lineHeight: 1.5,
-                    maxWidth: "240px",
+
+                    maxWidth: {
+                      xs: "100%",
+                      md: "240px",
+                    },
                   }}
                 >
                   {item.name}
@@ -277,6 +350,22 @@ export default function ShoppingCart() {
 
               {/* Price */}
               <Box>
+                <Typography
+                  sx={{
+                    display: {
+                      xs: "block",
+                      md: "none",
+                    },
+
+                    fontSize: "11px",
+                    color: "#5F6C72",
+                    fontWeight: 600,
+                    mb: 0.5,
+                  }}
+                >
+                  PRICE
+                </Typography>
+
                 {item.oldPrice && (
                   <Typography
                     sx={{
@@ -302,64 +391,100 @@ export default function ShoppingCart() {
               </Box>
 
               {/* Quantity */}
-              <Box
-                sx={{
-                  width: 120,
-                  height: 48,
-                  border: "1px solid #E4E7E9",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  px: 1,
-                }}
-              >
-                <IconButton
-                  onClick={() =>
-                    decreaseQty(item.id)
-                  }
-                >
-                  <RemoveIcon
-                    sx={{
-                      fontSize: 18,
-                      color: "#5F6C72",
-                    }}
-                  />
-                </IconButton>
-
+              <Box>
                 <Typography
                   sx={{
-                    fontSize: "16px",
+                    display: {
+                      xs: "block",
+                      md: "none",
+                    },
+
+                    fontSize: "11px",
+                    color: "#5F6C72",
+                    fontWeight: 600,
+                    mb: 0.5,
                   }}
                 >
-                  {String(item.quantity).padStart(2, "0")}
+                  QUANTITY
                 </Typography>
 
-                <IconButton
-                  onClick={() =>
-                    increaseQty(item.id)
-                  }
+                <Box
+                  sx={{
+                    width: 120,
+                    height: 48,
+                    border: "1px solid #E4E7E9",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    px: 1,
+                  }}
                 >
-                  <AddIcon
+                  <IconButton
+                    onClick={() =>
+                      decreaseQty(item.id)
+                    }
+                  >
+                    <RemoveIcon
+                      sx={{
+                        fontSize: 18,
+                        color: "#5F6C72",
+                      }}
+                    />
+                  </IconButton>
+
+                  <Typography
                     sx={{
-                      fontSize: 18,
-                      color: "#191C1F",
+                      fontSize: "16px",
                     }}
-                  />
-                </IconButton>
+                  >
+                    {String(item.quantity).padStart(2, "0")}
+                  </Typography>
+
+                  <IconButton
+                    onClick={() =>
+                      increaseQty(item.id)
+                    }
+                  >
+                    <AddIcon
+                      sx={{
+                        fontSize: 18,
+                        color: "#191C1F",
+                      }}
+                    />
+                  </IconButton>
+                </Box>
               </Box>
 
               {/* Subtotal */}
-              <Typography
-                sx={{
-                  fontSize: "15px",
-                  fontWeight: 500,
-                }}
-              >
-                $
-                {(
-                  item.price * item.quantity
-                ).toFixed(0)}
-              </Typography>
+              <Box>
+                <Typography
+                  sx={{
+                    display: {
+                      xs: "block",
+                      md: "none",
+                    },
+
+                    fontSize: "11px",
+                    color: "#5F6C72",
+                    fontWeight: 600,
+                    mb: 0.5,
+                  }}
+                >
+                  SUB-TOTAL
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: 500,
+                  }}
+                >
+                  $
+                  {(
+                    item.price * item.quantity
+                  ).toFixed(0)}
+                </Typography>
+              </Box>
             </Box>
           ))}
 
@@ -367,7 +492,16 @@ export default function ShoppingCart() {
           <Box
             sx={{
               display: "flex",
+
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+
               justifyContent: "space-between",
+
+              gap: 2,
+
               p: 3,
             }}
           >
@@ -381,6 +515,12 @@ export default function ShoppingCart() {
                 color: "#2DA5F3",
                 fontWeight: 600,
                 fontSize: "13px",
+
+                width: {
+                  xs: "100%",
+                  sm: "auto",
+                },
+
                 px: 3,
                 py: 1.4,
                 borderRadius: 0,
@@ -396,6 +536,12 @@ export default function ShoppingCart() {
                 color: "#2DA5F3",
                 fontWeight: 600,
                 fontSize: "13px",
+
+                width: {
+                  xs: "100%",
+                  sm: "auto",
+                },
+
                 px: 3,
                 py: 1.4,
                 borderRadius: 0,
@@ -409,7 +555,11 @@ export default function ShoppingCart() {
         {/* RIGHT SECTION */}
         <Box
           sx={{
-            width: 330,
+            width: {
+              xs: "100%",
+              lg: 330,
+            },
+
             display: "flex",
             flexDirection: "column",
             gap: 3,
@@ -425,7 +575,11 @@ export default function ShoppingCart() {
           >
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: {
+                  xs: "20px",
+                  md: "24px",
+                },
+
                 fontWeight: 600,
                 mb: 3,
               }}
@@ -492,11 +646,16 @@ export default function ShoppingCart() {
                 justifyContent:
                   "space-between",
                 mb: 3,
+                gap: 2,
               }}
             >
               <Typography
                 sx={{
-                  fontSize: "20px",
+                  fontSize: {
+                    xs: "18px",
+                    md: "20px",
+                  },
+
                   fontWeight: 600,
                 }}
               >
@@ -505,8 +664,13 @@ export default function ShoppingCart() {
 
               <Typography
                 sx={{
-                  fontSize: "20px",
+                  fontSize: {
+                    xs: "18px",
+                    md: "20px",
+                  },
+
                   fontWeight: 700,
+                  textAlign: "right",
                 }}
               >
                 ${total.toFixed(2)} USD
@@ -544,7 +708,11 @@ export default function ShoppingCart() {
           >
             <Typography
               sx={{
-                fontSize: "20px",
+                fontSize: {
+                  xs: "18px",
+                  md: "20px",
+                },
+
                 fontWeight: 600,
                 px: 3,
                 py: 2,
@@ -571,6 +739,12 @@ export default function ShoppingCart() {
                   bgcolor: "#2DA5F3",
                   color: "#fff",
                   height: 48,
+
+                  width: {
+                    xs: "100%",
+                    sm: "auto",
+                  },
+
                   px: 3,
                   borderRadius: 0,
                   fontWeight: 600,
@@ -586,6 +760,7 @@ export default function ShoppingCart() {
           </Box>
         </Box>
       </Box>
+
       <Footer />
     </Box>
   );

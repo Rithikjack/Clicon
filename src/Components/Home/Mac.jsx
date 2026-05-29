@@ -24,9 +24,6 @@ import Navbar from '../Home/Navbar';
 import Footer from '../Home/Black_Footer_2'
 
 
-
-
-
 import Dash from '../../assets/Dash_Cam.png'
 import Vivo from '../../assets/Vivo.png'
 import Keyboard from '../../assets/Bluetooth.png'
@@ -292,8 +289,9 @@ export default function ProductDetailsPage() {
             <Container
                 maxWidth={false}
                 sx={{
-                    width: '1285px',
-                    margin: '0 auto'
+                    width: { xs: '100%', sm: '100%', md: '1285px' },
+                    margin: '0 auto',
+                    px: { xs: 2, sm: 3, md: 0 },
                 }}
             >
 
@@ -301,12 +299,13 @@ export default function ProductDetailsPage() {
                 <Grid container spacing={4} sx={{ mb: 8 }}>
 
                     {/* LEFT COLUMN: INTERACTIVE GALLERY VIEWER */}
-                    <Grid item xs={12} md={5} sx={{ marginTop: 5, p:5 }}>
+                    <Grid item xs={12} md={5} sx={{ marginTop: 5, p: { xs: 2, md: 5 } }}>
                         {/* Main Large Visual Frame */}
                         <Box sx={{
                             border: '1px solid #E4E7E9', borderRadius: '4px', p: 1,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            height: 320, bgcolor: '#fff', position: 'relative', mb: 2
+                            height: { xs: 220, sm: 280, md: 320 },
+                            bgcolor: '#fff', position: 'relative', mb: 2
                         }}>
                             <Box
                                 component="img"
@@ -317,7 +316,7 @@ export default function ProductDetailsPage() {
                         </Box>
 
                         {/* Thumbnail Track Row with Flanking Actions */}
-                        <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative', px: 3,mt:9 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative', px: 3, mt: { xs: 4, md: 9 } }}>
                             <IconButton sx={{
                                 bgcolor: '#FA8232', color: '#fff', boxShadow: 2, zIndex: 2,
                                 position: 'absolute', left: 0, '&:hover': { bgcolor: '#E06F27' },
@@ -333,7 +332,8 @@ export default function ProductDetailsPage() {
                                             onClick={() => setActiveImgIdx(idx)}
                                             sx={{
                                                 border: activeImgIdx === idx ? '2px solid #FA8232' : '1px solid #E4E7E9',
-                                                borderRadius: '4px', p: 0.5, cursor: 'pointer', height: 55,
+                                                borderRadius: '4px', p: 0.5, cursor: 'pointer',
+                                                height: { xs: 40, sm: 48, md: 55 },
                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                 bgcolor: '#fff', transition: 'border 0.2s'
                                             }}
@@ -361,18 +361,18 @@ export default function ProductDetailsPage() {
                         md={6}
                         sx={{
                             mt: 5,
-                            maxWidth: '520px'
+                            maxWidth: { xs: '100%', md: '520px' },
                         }}
                     >
                         {/* Header Reviews Row */}
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1.5 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1.5, flexWrap: 'wrap' }}>
                             <Rating value={5} size="small" readOnly sx={{ color: '#FA8232', fontSize: '14px' }} />
                             <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#191C1F', ml: 0.5 }}>4.7 Star Rating</Typography>
                             <Typography sx={{ fontSize: '13px', color: '#77878F' }}>(21,671 User feedback)</Typography>
                         </Box>
 
                         {/* Title Text */}
-                        <Typography sx={{ fontSize: '20px', fontWeight: 500, color: '#191C1F', mb: 2, lineHeight: 1.4 }}>
+                        <Typography sx={{ fontSize: { xs: '16px', md: '20px' }, fontWeight: 500, color: '#191C1F', mb: 2, lineHeight: 1.4 }}>
                             2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray
                         </Typography>
 
@@ -393,8 +393,8 @@ export default function ProductDetailsPage() {
                         </Grid>
 
                         {/* Sale Display Pricing Matrix */}
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
-                            <Typography sx={{ fontWeight: 600, color: '#2DA5F3', fontSize: '24px' }}>$1699</Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5, flexWrap: 'wrap' }}>
+                            <Typography sx={{ fontWeight: 600, color: '#2DA5F3', fontSize: { xs: '20px', md: '24px' } }}>$1699</Typography>
                             <Typography sx={{ fontSize: '16px', color: '#929FA5', textDecoration: 'line-through' }}>$1999.00</Typography>
                             <Box sx={{ bgcolor: '#EFD33D', color: '#191C1F', px: 1, py: 0.4, borderRadius: '2px', fontSize: '12px', fontWeight: 600 }}>
                                 21% OFF
@@ -455,7 +455,7 @@ export default function ProductDetailsPage() {
                         </Grid>
 
                         {/* Action Row Checkout Trigger Elements */}
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3.5 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3.5, flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
                             {/* Inline Numeric Selector */}
                             <Box sx={{ display: 'flex', alignItems: 'center', border: '1px solid #E4E7E9', borderRadius: '4px', height: 44 }}>
                                 <IconButton onClick={() => quantity > 1 && setQuantity(p => p - 1)} sx={{ px: 1.5 }} size="small">
@@ -477,9 +477,9 @@ export default function ProductDetailsPage() {
                                 endIcon={<ShoppingCartOutlinedIcon />}
                                 sx={{
                                     borderRadius: '0px',
-
                                     bgcolor: '#FA8232', color: '#fff', fontWeight: 700, px: 4, height: 44, boxShadow: 'none',
-                                    flexGrow: 2, '&:hover': { bgcolor: '#E06F27', boxShadow: 'none' }, fontSize: '14px', width: '60%'
+                                    flexGrow: 2, '&:hover': { bgcolor: '#E06F27', boxShadow: 'none' }, fontSize: '14px',
+                                    width: { xs: '100%', sm: '60%' },
                                 }}
                             >
                                 ADD TO CARD
@@ -495,17 +495,13 @@ export default function ProductDetailsPage() {
                                     color: '#FA8232',
                                     fontWeight: 700,
                                     height: 44,
-                                    width: '20%',
+                                    width: { xs: '100%', sm: '20%' },
                                     fontSize: '13px',
-                                    borderRadius: '8px',
-
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-
                                     whiteSpace: 'nowrap',
                                     borderRadius: '0px',
-
                                     '&:hover': {
                                         borderColor: '#E06F27',
                                         bgcolor: 'rgba(250,130,50,0.03)',
@@ -518,7 +514,7 @@ export default function ProductDetailsPage() {
 
                         {/* Social Utility Row */}
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, mb: 4, flexWrap: 'wrap' }}>
-                            <Box sx={{ display: 'flex', gap: 2.5 }}>
+                            <Box sx={{ display: 'flex', gap: 2.5, flexWrap: 'wrap' }}>
                                 <Button startIcon={<FavoriteBorderIcon />} sx={{ color: '#475156', textTransform: 'none', fontSize: '13px', p: 0, '&:hover': { color: '#191C1F', bg: 'none' } }}>
                                     Add to Wishlist
                                 </Button>
@@ -527,7 +523,7 @@ export default function ProductDetailsPage() {
                                 </Button>
                             </Box>
 
-                            <Stack direction="row" alignItems="center" spacing={1}>
+                            <Stack direction="row" alignItems="center" spacing={1} sx={{ flexWrap: 'wrap' }}>
                                 <Typography sx={{ fontSize: '13px', color: '#475156' }}>Share product:</Typography>
                                 <IconButton size="small" sx={{ color: '#5F6C72' }}><ContentCopyIcon sx={{ fontSize: 16 }} /></IconButton>
                                 <IconButton size="small" sx={{ color: '#5F6C72' }}><FacebookIcon sx={{ fontSize: 16 }} /></IconButton>
@@ -547,7 +543,7 @@ export default function ProductDetailsPage() {
                                     src={Pay}
                                     alt="Payment"
                                     sx={{
-                                        width: 300,
+                                        width: { xs: '100%', sm: 300 },
                                         height: 'auto',
                                         objectFit: 'contain'
                                     }}
@@ -560,13 +556,15 @@ export default function ProductDetailsPage() {
                 {/* ── LOWER TABBED METRICS INTERACTION PANEL ─────────────────────────── */}
                 <Box sx={{ border: '1px solid #E4E7E9', borderRadius: '4px' }}>
                     {/* Navigation Section Tab Header */}
-                    <Box sx={{ borderBottom: '1px solid #E4E7E9', display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ borderBottom: '1px solid #E4E7E9', display: 'flex', justifyContent: 'center', overflowX: 'auto' }}>
                         <Tabs
                             value={tabIndex}
                             onChange={(_, value) => setTabIndex(value)}
+                            variant="scrollable"
+                            scrollButtons="auto"
                             TabIndicatorProps={{ style: { backgroundColor: '#FA8232', height: '3px' } }}
                             sx={{
-                                '& .MuiTab-root': { textTransform: 'none', fontWeight: 600, fontSize: '13px', px: 3, py: 2, color: '#77878F' },
+                                '& .MuiTab-root': { textTransform: 'none', fontWeight: 600, fontSize: { xs: '11px', md: '13px' }, px: { xs: 1.5, md: 3 }, py: 2, color: '#77878F' },
                                 '& .Mui-selected': { color: '#191C1F !important' }
                             }}
                         >
@@ -584,10 +582,10 @@ export default function ProductDetailsPage() {
                                 {/* Detailed Editorial Text Area */}
                                 <Grid item xs={12} lg={6}>
                                     <Typography sx={{ fontWeight: 600, fontSize: '15px', color: '#191C1F', mb: 1.5 }}>Description</Typography>
-                                    <Typography sx={{ fontSize: '13px', color: '#5F6C72', lineHeight: 1.6, width: 700, mb: 2 }}>
+                                    <Typography sx={{ fontSize: '13px', color: '#5F6C72', lineHeight: 1.6, width: { xs: '100%', lg: 700 }, mb: 2 }}>
                                         The most powerful MacBook Pro ever is here. With the blazing-fast M1 Pro or M1 Max chip — the first Apple silicon designed for pros — you get groundbreaking performance and amazing battery life. Add to that a stunning Liquid Retina XDR display, the best camera and audio ever in a Mac notebook, and all the ports you need. The first notebook of its kind, this MacBook Pro is a beast. M1 Pro takes the exceptional performance of the M1 architecture to a whole new level for pro users.
                                     </Typography>
-                                    <Typography sx={{ fontSize: '13px', color: '#5F6C72', width: 700, lineHeight: 1.6 }}>
+                                    <Typography sx={{ fontSize: '13px', color: '#5F6C72', width: { xs: '100%', lg: 700 }, lineHeight: 1.6 }}>
                                         Even the most ambitious projects are easily handled with up to 10 CPU cores, up to 16 GPU cores, a 16-core Neural Engine, and dedicated encode and decode media engines that support H.264, HEVC, and ProRes codecs.
                                     </Typography>
                                 </Grid>
@@ -612,7 +610,7 @@ export default function ProductDetailsPage() {
                                 </Grid>
 
                                 {/* Delivery Logistics Content Panel */}
-                                <Grid item xs={12} sm={6} lg={3} sx={{ borderLeft: '2px solid rgb(213, 213, 213)', p: 1 }}>
+                                <Grid item xs={12} sm={6} lg={3} sx={{ borderLeft: { xs: 'none', sm: '2px solid rgb(213, 213, 213)' }, p: 1 }}>
                                     <Typography sx={{ fontWeight: 600, fontSize: '15px', color: '#191C1F', mb: 2 }}>Shipping Information</Typography>
                                     <Stack spacing={1.5}>
                                         <Typography sx={{ fontSize: '13px', color: '#5F6C72' }}>
@@ -642,11 +640,11 @@ export default function ProductDetailsPage() {
                                 {/* Detailed Editorial Text Area */}
                                 <Grid item xs={12} lg={6}>
                                     <Typography sx={{ fontWeight: 600, fontSize: '15px', color: '#191C1F', mb: 1.5 }}>Additional Info</Typography>
-                                    <Typography sx={{ fontSize: '13px', color: '#5F6C72', lineHeight: 1.6, width: 700, mb: 2 }}>
+                                    <Typography sx={{ fontSize: '13px', color: '#5F6C72', lineHeight: 1.6, width: { xs: '100%', lg: 700 }, mb: 2 }}>
                                         Apple's Mac lineup runs on the Unix-based macOS operating system, powered by Apple silicon. It offers seamless iPhone integration, advanced privacy features, and system-wide Apple Intelligence with Writing Tools, Genmoji, and Image Playground                </Typography>
-                                    <Typography component={'li'} sx={{ fontSize: '13px', color: '#5F6C72', width: 700, lineHeight: 1.6 }}>
+                                    <Typography component={'li'} sx={{ fontSize: '13px', color: '#5F6C72', width: { xs: '100%', lg: 700 }, lineHeight: 1.6 }}>
                                         MacBook Air: Available in 13-inch and 15-inch sizes. Thinner, highly portable, and uses the M5 chip for fast performance and all-day battery life.                </Typography>
-                                    <Typography component={'li'} sx={{ fontSize: '13px', color: '#5F6C72', lineHeight: 1.6, width: 700, mb: 2, marginTop: 1 }}>
+                                    <Typography component={'li'} sx={{ fontSize: '13px', color: '#5F6C72', lineHeight: 1.6, width: { xs: '100%', lg: 700 }, mb: 2, marginTop: 1 }}>
                                         MacBook Pro: Available in 14-inch and 16-inch sizes. Powered by M5, M5 Pro, or M5 Max chips for demanding creative and pro workflows.
                                     </Typography>
                                 </Grid>
@@ -671,20 +669,20 @@ export default function ProductDetailsPage() {
                                 </Grid>
 
                                 {/* Delivery Logistics Content Panel */}
-                                <Grid item xs={12} sm={6} lg={3} sx={{ borderLeft: '2px solid rgb(213, 213, 213)', p: 1 }}>
-                                    <Typography sx={{ fontWeight: 600, fontSize: '15px', color: '#191C1F', mb: 2, marginLeft: 3 }}>Shipping Information</Typography>
+                                <Grid item xs={12} sm={6} lg={3} sx={{ borderLeft: { xs: 'none', sm: '2px solid rgb(213, 213, 213)' }, p: 1 }}>
+                                    <Typography sx={{ fontWeight: 600, fontSize: '15px', color: '#191C1F', mb: 2, marginLeft: { xs: 0, sm: 3 } }}>Shipping Information</Typography>
                                     <Stack spacing={1.5}>
-                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: 3 }}>
-                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: 3 }}>Courier:</Box> 2 - 4 days, free shipping
+                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: { xs: 0, sm: 3 } }}>
+                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: { xs: 0, sm: 3 } }}>Courier:</Box> 2 - 4 days, free shipping
                                         </Typography>
-                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: 3 }}>
-                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: 3 }}>Local Shipping:</Box> up to one week, $19.00
+                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: { xs: 0, sm: 3 } }}>
+                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: { xs: 0, sm: 3 } }}>Local Shipping:</Box> up to one week, $19.00
                                         </Typography>
-                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: 3 }}>
-                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: 3 }}>UPS Ground Shipping:</Box> 4 - 6 days, $29.00
+                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: { xs: 0, sm: 3 } }}>
+                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: { xs: 0, sm: 3 } }}>UPS Ground Shipping:</Box> 4 - 6 days, $29.00
                                         </Typography>
-                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: 3 }}>
-                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: 3 }}>Unishop Global Export:</Box> 3 - 4 days, $39.00
+                                        <Typography sx={{ fontSize: '13px', color: '#5F6C72', marginLeft: { xs: 0, sm: 3 } }}>
+                                            <Box component="span" sx={{ color: '#191C1F', fontWeight: 500, marginLeft: { xs: 0, sm: 3 } }}>Unishop Global Export:</Box> 3 - 4 days, $39.00
                                         </Typography>
                                     </Stack>
                                 </Grid>

@@ -120,29 +120,252 @@ const Footer = ({ showNewsletter = true }) => {
                         </Grid>
 
                         {/* Top Category */}
-                        <Grid item xs={12} md={2} sx={{ marginLeft: 5 }}>
+                        <Grid item xs={12} md={2} sx={{ marginLeft: 2 }}>
                             <Typography sx={{ color: 'white', mb: 3, fontWeight: 600 }}>TOP CATEGORY</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Computer & Laptop</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>SmartPhone</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Headphone</Typography>
-                            <Typography sx={{ color: 'white', mb: 1, borderLeft: '3px solid #EBC80C', pl: 1 }}>Accessories</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Camera & Photo</Typography>
-                            <Typography sx={{ color: 'grey', mb: 2 }}>TV & Homes</Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Computer & laptops
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Smart Phone
+                                </Link>
+                            </Typography>
+                            <Typography>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Headphone
+                                </Link>
+                            </Typography>
+                            {/* <Typography sx={{ color: 'grey', mb: 1 }}>Headphone</Typography> */}
+                            <Typography sx={{ color: 'white', mb: 1, borderLeft: '3px solid #EBC80C', pl: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Accessories
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Camera & Photo
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 2 }}>
+
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    TV & Homes
+                                </Link>
+                            </Typography>
                             <Link href="/about" underline="none" sx={{ color: '#EBC80C', display: 'flex', alignItems: 'center', gap: 1, fontSize: '14px' }}>
                                 Browse All Product <ArrowRightAltIcon fontSize="small" />
                             </Link>
                         </Grid>
 
                         {/* Quick Links */}
-                        <Grid item xs={12} md={2} sx={{ marginLeft: 5 }}>
+                        <Grid item xs={12} md={2} sx={{ marginLeft: 3 }}>
                             <Typography sx={{ color: 'white', mb: 3, fontWeight: 600 }}>QUICK LINKS</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Shop Product</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Shopping Cart</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Wishlist</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Compare</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Track Order</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>Customer Help</Typography>
-                            <Typography sx={{ color: 'grey', mb: 1 }}>About Us</Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Shop Products
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Shopping Cart
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >
+                                    Wishlist
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                > Compare
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                > Track Order
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                >Customer Help
+                                </Link>
+                            </Typography>
+                            <Typography sx={{ color: 'grey', mb: 1 }}>
+                                <Link
+                                    href="/headphone"
+                                    underline="none"
+                                    sx={{
+                                        color: 'grey',
+                                        mb: 1,
+                                        display: 'block',
+                                        cursor: 'pointer',
+
+                                        '&:hover': {
+                                            color: '#FFFFFF',
+                                        }
+                                    }}
+                                > About Us
+                                </Link>
+                            </Typography>
                         </Grid>
 
                         {/* Download App */}

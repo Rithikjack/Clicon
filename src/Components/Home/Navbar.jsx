@@ -113,8 +113,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
   paddingLeft: '15px',
   fontFamily: "'Public Sans', sans-serif",
-  fontSize:14,
-  color:'#77878F',
+  fontSize: 14,
+  color: '#77878F',
   '& .MuiInputBase-input': { padding: theme.spacing(1, 1, 1, 0), fontSize: '14px' },
 }));
 
@@ -137,7 +137,7 @@ const TopBarDropdown = ({ value, options, onSelect, color = '#fff' }) => {
           '&:hover': { opacity: 0.85 }
         }}
       >
-        <Typography variant="body2" sx={{ fontSize: '13px', color,fontFamily: "'Public Sans', sans-serif" }}>
+        <Typography variant="body2" sx={{ fontSize: '13px', color, fontFamily: "'Public Sans', sans-serif" }}>
           {value}
         </Typography>
         <KeyboardArrowDownIcon sx={{ fontSize: '16px', color }} />
@@ -205,36 +205,36 @@ const Navbar = () => {
 
     <Box sx={{ flexGrow: 1 }}>
       {/* 1. Top Utility Bar */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1, bgcolor: '#1B6392', color: '#FFFFFF',fontFamily: "'Public Sans', sans-serif" }}>
-        <Typography variant="body2" sx={{ fontSize: '13px' ,fontFamily: "'Public Sans', sans-serif"}}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 4, py: 1, bgcolor: '#1B6392', color: '#FFFFFF', fontFamily: "'Public Sans', sans-serif" }}>
+        <Typography variant="body2" sx={{ fontSize: '13px', fontFamily: "'Public Sans', sans-serif" }}>
           Welcome to Clicon online eCommerce store.
         </Typography>
-
+{/* 
         <Typography
           component={Link}
-          to="/wish"
+          to="/his"
           sx={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
         >
           Wish
-        </Typography>
+        </Typography> */}
 
-        <Typography
+        {/* <Typography
           component={Link}
           to="/check"
           sx={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
         >
           Check
-        </Typography>
+        </Typography>  */}
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="body2" sx={{ fontSize: '13px', mr: 0.5 ,fontFamily: "'Public Sans', sans-serif"}}>Follow us:</Typography>
-            <img src={twitter}   style={{ width: 16, cursor: 'pointer',height:16 }} alt="Twitter" />
-            <img src={facebook} style={{ width: 16, cursor: 'pointer',height:16 }} alt="Facebook" />
-            <img src={printrest} style={{ width: 16, cursor: 'pointer',height:16 }} alt="Pinterest" />
-            <img src={reddit}    style={{ width: 16, cursor: 'pointer',height:16 }} alt="Reddit" />
-            <img src={youtube}   style={{ width: 16, cursor: 'pointer',height:16 }} alt="YouTube" />
-            <img src={instagram} style={{ width: 16, cursor: 'pointer',height:16 }} alt="Instagram" />
+            <Typography variant="body2" sx={{ fontSize: '13px', mr: 0.5, fontFamily: "'Public Sans', sans-serif" }}>Follow us:</Typography>
+            <img src={twitter} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Twitter" />
+            <img src={facebook} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Facebook" />
+            <img src={printrest} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Pinterest" />
+            <img src={reddit} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Reddit" />
+            <img src={youtube} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="YouTube" />
+            <img src={instagram} style={{ width: 16, cursor: 'pointer', height: 16 }} alt="Instagram" />
           </Box>
 
           <Box sx={{ width: '1px', height: '16px', bgcolor: 'rgba(255,255,255,0.3)' }} />
@@ -253,8 +253,8 @@ const Navbar = () => {
             onClick={() => navigate('/')}
             sx={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}
           >
-            <img src={logo} alt="Logo" style={{ width: 48,height:48}} />
-            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } ,fontWeight:700,fontFamily: "'Public Sans', sans-serif",fontSize:32}}>CLICON</Typography>
+            <img src={logo} alt="Logo" style={{ width: 48, height: 48 }} />
+            <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' }, fontWeight: 700, fontFamily: "'Public Sans', sans-serif", fontSize: 32 }}>CLICON</Typography>
           </Box>
 
           {/* Search */}
@@ -313,7 +313,7 @@ const Navbar = () => {
           }}
           onClick={handleCatClick}
         >
-          <Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1 ,fontFamily: "'Public Sans', sans-serif"}}>All Category</Typography>
+          <Typography variant="body2" sx={{ fontWeight: 'bold', mr: 1, fontFamily: "'Public Sans', sans-serif" }}>All Category</Typography>
           <KeyboardArrowDownIcon fontSize="small" />
         </Box>
 
@@ -629,52 +629,71 @@ const Navbar = () => {
             onClick={() => navigate('/track-order')}
             sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}
           >
-            <Box sx={{width:'24px', height:'24px'}}>
-              <img src={trackIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt='trackorder'/>
-              </Box>
-            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
-              Track Order            
-              </Typography>
+            <Box sx={{ width: '24px', height: '24px' }}>
+              <img src={trackIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt='trackorder' />
+            </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73', fontWeight: 400 }}>
+              Track Order
+            </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' }, fontWeight:400}}>
-            <Box sx={{width:'24px', height:'24px'}}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' }, fontWeight: 400 }}>
+            <Box sx={{ width: '24px', height: '24px' }}>
               <img src={compareIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Compare" />
-              </Box>
-            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
-              Compare           
-              </Typography>
-             
+            </Box>
+            <Typography
+              component="a"
+              href="/compare"
+              sx={{
+                fontSize: '14px',
+                fontFamily: "'Public Sans', sans-serif",
+                color: '#5f6c73',
+                fontWeight: 400,
+                cursor: 'pointer',
+                textDecoration: 'none',
+
+                '&:hover': {
+                  textDecoration: 'none',
+                },
+
+                '&:visited': {
+                  textDecoration: 'none',
+                  color: '#5f6c73',
+                }
+              }}
+            >
+              Compare
+            </Typography>
           </Box>
 
-          <Box  onClick={() => navigate('/customer-support')}
-          sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}>
-            <Box sx={{width:'24px', height:'24px'}}>
-              <img src={supportIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Customer Support" /> 
-              </Box>
-            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
-              Customer Support          
-              </Typography>
-            
+          <Box onClick={() => navigate('/customer-support')}
+            sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}>
+            <Box sx={{ width: '24px', height: '24px' }}>
+              <img src={supportIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Customer Support" />
+            </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73', fontWeight: 400 }}>
+              Customer Support
+            </Typography>
+
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, cursor: 'pointer', fontSize: '14px', '&:hover': { color: '#FA8232' } }}>
-            <Box sx={{width:'24px', height:'24px'}}>
+            <Box sx={{ width: '24px', height: '24px' }}>
               <img src={helpIcon} style={{ width: '20px', height: '20px', objectFit: 'contain' }} alt="Need Help" />
-              </Box>
-            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73',fontWeight:400}}>
-              Need Help           
-              </Typography>
-            
+            </Box>
+            <Typography sx={{ fontSize: '14px', fontFamily: "'Public Sans', sans-serif", color: '#5f6c73', fontWeight: 400 }}>
+              Need Help
+            </Typography>
+
           </Box>
 
         </Box>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Box sx={{ width: '20px', height: '20px', objectFit: 'contain' }} >
-            <img src={callIcon} style={{width:'20px', height:'20px'}} alt="Call" />
-          </Box>    
-          <Typography variant="body2" sx={{ fontWeight: 600, fontSize: '15px',fontFamily: "'Public Sans', sans-serif",color:'#191C1F'}}>+1-202-555-0104</Typography>
+            <img src={callIcon} style={{ width: '20px', height: '20px' }} alt="Call" />
+          </Box>
+          <Typography variant="body2" sx={{ fontWeight: 600, fontSize: '15px', fontFamily: "'Public Sans', sans-serif", color: '#191C1F' }}>+1-202-555-0104</Typography>
         </Box>
       </Box>
 

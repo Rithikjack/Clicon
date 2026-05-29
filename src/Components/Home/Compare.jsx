@@ -178,19 +178,46 @@ export default function ProductComparison() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <Box sx={{ bgcolor: "background.default", minHeight: "100vh", p: 3, fontFamily: "'DM Sans', sans-serif" }}>
+      <Box
+        sx={{
+          bgcolor: "background.default",
+          minHeight: "100vh",
+          p: {
+            xs: 1,
+            sm: 2,
+            md: 3,
+          },
+          fontFamily: "'DM Sans', sans-serif",
+        }}
+      >
         <Box
           sx={{
+            width: "100%",
             maxWidth: 1040,
             mx: "auto",
             bgcolor: "background.paper",
             borderRadius: 2,
-            overflow: "hidden",
+            overflowX: "auto",
+            overflowY: "hidden",
             boxShadow: "0 2px 12px rgba(0,0,0,0.07)",
           }}
         >
-          <Box sx={{ display: "grid", gridTemplateColumns: `200px repeat(${visibleProducts.length}, 1fr)` }}>
-            {/* Header row: empty label col + product cards */}
+          <Box
+            sx={{
+              display: "grid",
+              minWidth: {
+                xs: "900px",
+                sm: "950px",
+                md: "100%",
+              },
+              gridTemplateColumns: {
+                xs: `170px repeat(${visibleProducts.length}, 260px)`,
+                sm: `190px repeat(${visibleProducts.length}, 280px)`,
+                md: `200px repeat(${visibleProducts.length}, 1fr)`,
+              },
+            }}
+          >
+            {/* Header row */}
             <Box sx={{ bgcolor: "background.paper" }} />
 
             {visibleProducts.map((product) => (
@@ -198,14 +225,17 @@ export default function ProductComparison() {
                 key={product.id}
                 sx={{
                   borderLeft: "1px solid #ebebeb",
-                  p: 2,
+                  p: {
+                    xs: 1.5,
+                    sm: 2,
+                  },
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   position: "relative",
                 }}
               >
-                {/* Dismiss button */}
+                {/* Close Button */}
                 <IconButton
                   size="small"
                   onClick={() => setDismissed((d) => [...d, product.id])}
@@ -227,8 +257,16 @@ export default function ProductComparison() {
                   src={product.image}
                   alt={product.name}
                   sx={{
-                    width: 160,
-                    height: 130,
+                    width: {
+                      xs: 110,
+                      sm: 130,
+                      md: 160,
+                    },
+                    height: {
+                      xs: 90,
+                      sm: 110,
+                      md: 130,
+                    },
                     objectFit: "contain",
                     mb: 1.5,
                     mt: 1,
@@ -240,28 +278,74 @@ export default function ProductComparison() {
                   variant="body2"
                   fontWeight={500}
                   textAlign="center"
-                  sx={{ mb: 2, minHeight: 56, lineHeight: 1.4, fontSize: "0.83rem" }}
+                  sx={{
+                    mb: 2,
+                    minHeight: {
+                      xs: 70,
+                      sm: 65,
+                      md: 56,
+                    },
+                    lineHeight: 1.4,
+                    fontSize: {
+                      xs: "0.75rem",
+                      sm: "0.8rem",
+                      md: "0.83rem",
+                    },
+                  }}
                 >
                   {product.name}
                 </Typography>
 
-                {/* Add to Cart + Wishlist */}
-                <Stack direction="row" spacing={1} alignItems="center" width="100%">
+                {/* Buttons */}
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  width="100%"
+                >
                   <Button
                     variant="contained"
                     fullWidth
                     disabled={product.stock === "OUT OF STOCK"}
                     startIcon={<ShoppingCartIcon sx={{ fontSize: 16 }} />}
                     sx={{
-                      bgcolor: product.stock === "OUT OF STOCK" ? "#ccc" : "primary.main",
+                      bgcolor:
+                        product.stock === "OUT OF STOCK"
+                          ? "#ccc"
+                          : "primary.main",
+
                       color: "#fff",
-                      "&:hover": { bgcolor: product.stock === "OUT OF STOCK" ? "#ccc" : "#d96800" },
-                      "&.Mui-disabled": { bgcolor: "#d5d5d5", color: "#999" },
-                      fontSize: "0.75rem",
+
+                      "&:hover": {
+                        bgcolor:
+                          product.stock === "OUT OF STOCK"
+                            ? "#ccc"
+                            : "#d96800",
+                      },
+
+                      "&.Mui-disabled": {
+                        bgcolor: "#d5d5d5",
+                        color: "#999",
+                      },
+
+                      fontSize: {
+                        xs: "0.68rem",
+                        sm: "0.72rem",
+                        md: "0.75rem",
+                      },
+
+                      height: {
+                        xs: 34,
+                        sm: 36,
+                        md: 38,
+                      },
+
+                      whiteSpace: "nowrap",
                     }}
                   >
                     ADD TO CARD
                   </Button>
+
                   <IconButton
                     size="small"
                     onClick={() => toggleWishlist(product.id)}
@@ -274,19 +358,29 @@ export default function ProductComparison() {
                     }}
                   >
                     {wishlist.includes(product.id) ? (
-                      <FavoriteIcon sx={{ fontSize: 18, color: "primary.main" }} />
+                      <FavoriteIcon
+                        sx={{
+                          fontSize: 18,
+                          color: "primary.main",
+                        }}
+                      />
                     ) : (
-                      <FavoriteBorderIcon sx={{ fontSize: 18, color: "#aaa" }} />
+                      <FavoriteBorderIcon
+                        sx={{
+                          fontSize: 18,
+                          color: "#aaa",
+                        }}
+                      />
                     )}
                   </IconButton>
                 </Stack>
               </Box>
             ))}
 
-            {/* Data rows */}
+            {/* Data Rows */}
             {rows.map((row, rowIdx) => (
               <>
-                {/* Label cell */}
+                {/* Label */}
                 <Box
                   key={`label-${row.key}`}
                   sx={{
@@ -298,12 +392,19 @@ export default function ProductComparison() {
                     py: 1.2,
                   }}
                 >
-                  <Typography fontSize="0.83rem" color="text.secondary">
+                  <Typography
+                    fontSize={{
+                      xs: "0.72rem",
+                      sm: "0.78rem",
+                      md: "0.83rem",
+                    }}
+                    color="text.secondary"
+                  >
                     {row.label}
                   </Typography>
                 </Box>
 
-                {/* Value cells */}
+                {/* Values */}
                 {visibleProducts.map((product) => (
                   <Box
                     key={`${product.id}-${row.key}`}
@@ -317,7 +418,67 @@ export default function ProductComparison() {
                       py: 1.2,
                     }}
                   >
-                    {renderCell(product, row.key)}
+                    {row.key === "rating" ? (
+                      <Stack
+                        direction="row"
+                        alignItems="center"
+                        spacing={0.5}
+                      >
+                        <Rating
+                          value={product.rating}
+                          precision={0.5}
+                          readOnly
+                          size="small"
+                          sx={{ color: "#F07800" }}
+                        />
+
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                        >
+                          ({product.reviewCount})
+                        </Typography>
+                      </Stack>
+                    ) : row.key === "price" ? (
+                      <Typography
+                        fontWeight={700}
+                        color="primary"
+                        fontSize={{
+                          xs: "0.8rem",
+                          sm: "0.88rem",
+                          md: "0.95rem",
+                        }}
+                      >
+                        {product.price}
+                      </Typography>
+                    ) : row.key === "stock" ? (
+                      <Typography
+                        fontWeight={700}
+                        fontSize={{
+                          xs: "0.72rem",
+                          sm: "0.78rem",
+                          md: "0.82rem",
+                        }}
+                        color={
+                          product.stock === "IN STOCK"
+                            ? "success.main"
+                            : "error.main"
+                        }
+                      >
+                        {product.stock}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        fontSize={{
+                          xs: "0.74rem",
+                          sm: "0.8rem",
+                          md: "0.85rem",
+                        }}
+                        color="text.primary"
+                      >
+                        {product[row.key]}
+                      </Typography>
+                    )}
                   </Box>
                 ))}
               </>
@@ -326,7 +487,10 @@ export default function ProductComparison() {
 
           {visibleProducts.length === 0 && (
             <Box sx={{ textAlign: "center", py: 8 }}>
-              <Typography color="text.secondary">All products removed from comparison.</Typography>
+              <Typography color="text.secondary">
+                All products removed from comparison.
+              </Typography>
+
               <Button
                 variant="outlined"
                 sx={{ mt: 2 }}

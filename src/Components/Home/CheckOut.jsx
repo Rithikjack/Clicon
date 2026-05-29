@@ -125,7 +125,7 @@ export default function CheckoutPage() {
         sx={{
           bgcolor: "#fff",
           borderBottom: "1px solid #E4E7E9",
-          px: 15,
+          px: { xs: 2, sm: 5, md: 15 },
           py: 2,
         }}
       >
@@ -134,6 +134,7 @@ export default function CheckoutPage() {
             display: "flex",
             alignItems: "center",
             gap: 1,
+            flexWrap: "wrap",
           }}
         >
           <HomeOutlinedIcon
@@ -180,16 +181,18 @@ export default function CheckoutPage() {
           mx: "auto",
           mt: 6,
           display: "flex",
+          flexDirection: { xs: "column", lg: "row" },
           gap: 4,
           alignItems: "flex-start",
+          px: { xs: 2, sm: 3, md: 4, lg: 0 },
         }}
       >
         {/* LEFT SIDE */}
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, width: "100%" }}>
           {/* Billing Information */}
           <Typography
             sx={{
-              fontSize: 22,
+              fontSize: { xs: 18, md: 22 },
               fontWeight: 600,
               mb: 3,
             }}
@@ -198,67 +201,110 @@ export default function CheckoutPage() {
           </Typography>
 
           <Grid container spacing={2}>
-            {/* First Name */}
-            <Grid item xs={4}>
-              <Typography sx={labelStyle}>
-                User name
-              </Typography>
+           {/* First Name */}
+<Grid
+  item
+  xs={12}
+  sm={6}
+  md={4}
+>
+  <Typography
+    sx={{
+      ...labelStyle,
+      mb: 1,
+      fontSize: {
+        xs: "13px",
+        sm: "14px",
+      },
+    }}
+  >
+    User name
+  </Typography>
 
-              <TextField
-                fullWidth
-                placeholder="First name"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                error={!!errors.firstName}
-                helperText={errors.firstName}
-                size="small"
-              />
-            </Grid>
+  <TextField
+    fullWidth
+    placeholder="First name"
+    name="firstName"
+    value={formData.firstName}
+    onChange={handleChange}
+    error={!!errors.firstName}
+    helperText={errors.firstName}
+    size="small"
+  />
+</Grid>
 
-            {/* Last Name */}
-            <Grid item xs={4}>
-              <Typography sx={labelStyle}>
-                &nbsp;
-              </Typography>
+{/* Last Name */}
+<Grid
+  item
+  xs={12}
+  sm={6}
+  md={4}
+>
+  <Typography
+    sx={{
+      ...labelStyle,
+      mb: 1,
+      visibility: {
+        xs: "hidden",
+        sm: "hidden",
+        md: "visible",
+      },
+    }}
+  >
+    Name
+  </Typography>
 
-              <TextField
-                fullWidth
-                placeholder="Last name"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                error={!!errors.lastName}
-                helperText={errors.lastName}
-                size="small"
-              />
-            </Grid>
+  <TextField
+    fullWidth
+    placeholder="Last name"
+    name="lastName"
+    value={formData.lastName}
+    onChange={handleChange}
+    error={!!errors.lastName}
+    helperText={errors.lastName}
+    size="small"
+  />
+</Grid>
 
-            {/* Company */}
-            <Grid item xs={4}>
-              <Typography sx={labelStyle}>
-                Company Name
-                <span
-                  style={{
-                    color: "#929FA5",
-                  }}
-                >
-                  {" "}
-                  (Optional)
-                </span>
-              </Typography>
+{/* Company */}
+<Grid
+  item
+  xs={12}
+  sm={12}
+  md={4}
+>
+  <Typography
+    sx={{
+      ...labelStyle,
+      mb: 1,
+      fontSize: {
+        xs: "13px",
+        sm: "14px",
+      },
+    }}
+  >
+    Company Name
+    <span
+      style={{
+        color: "#929FA5",
+      }}
+    >
+      {" "}
+      (Optional)
+    </span>
+  </Typography>
 
-              <TextField
-                fullWidth
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                size="small"
-              />
-            </Grid>
+  <TextField
+    fullWidth
+    name="company"
+    value={formData.company}
+    onChange={handleChange}
+    size="small"
+  />
+</Grid>
 
             {/* Address */}
-            <Grid item xs={12} sx={{width:700}}>
+            <Grid item xs={12} sx={{ width: { xs: "100%", md: 700 } }}>
               <Typography sx={labelStyle}>
                 Address
               </Typography>
@@ -275,7 +321,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* Country */}
-            <Grid item xs={3} sx={{width:160}}>
+            <Grid item xs={6} sm={3} sx={{ width: { xs: "100%", sm: 160 } }}>
               <Typography sx={labelStyle}>
                 Country
               </Typography>
@@ -302,7 +348,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* State */}
-            <Grid item xs={3} sx={{width:160}}>
+            <Grid item xs={6} sm={3} sx={{ width: { xs: "100%", sm: 160 } }}>
               <Typography sx={labelStyle}>
                 Region/State
               </Typography>
@@ -329,7 +375,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* City */}
-            <Grid item xs={3} sx={{width:165}}>
+            <Grid item xs={6} sm={3} sx={{ width: { xs: "100%", sm: 165 } }}>
               <Typography sx={labelStyle}>
                 City
               </Typography>
@@ -356,7 +402,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* Zip */}
-            <Grid item xs={3} sx={{width:165}}>
+            <Grid item xs={6} sm={3} sx={{ width: { xs: "100%", sm: 165 } }}>
               <Typography sx={labelStyle}>
                 Zip Code
               </Typography>
@@ -371,7 +417,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* Email */}
-            <Grid item xs={6} sx={{width:340}}>
+            <Grid item xs={12} sm={6} sx={{ width: { xs: "100%", sm: 340 } }}>
               <Typography sx={labelStyle}>
                 Email
               </Typography>
@@ -388,7 +434,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* Phone */}
-            <Grid item xs={6} sx={{width: 340}}>
+            <Grid item xs={12} sm={6} sx={{ width: { xs: "100%", sm: 340 } }}>
               <Typography sx={labelStyle}>
                 Phone Number
               </Typography>
@@ -434,7 +480,7 @@ export default function CheckoutPage() {
               sx={{
                 px: 3,
                 py: 2,
-                fontSize: 20,
+                fontSize: { xs: 16, md: 20 },
                 fontWeight: 600,
                 borderBottom:
                   "1px solid #E4E7E9",
@@ -447,8 +493,11 @@ export default function CheckoutPage() {
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns:
-                  "repeat(5,1fr)",
+                gridTemplateColumns: {
+                  xs: "repeat(2, 1fr)",
+                  sm: "repeat(3, 1fr)",
+                  md: "repeat(5, 1fr)",
+                },
                 borderBottom:
                   "1px solid #E4E7E9",
               }}
@@ -469,6 +518,10 @@ export default function CheckoutPage() {
                       index !== 4
                         ? "1px solid #E4E7E9"
                         : "none",
+                    borderBottom: {
+                      xs: "1px solid #E4E7E9",
+                      md: "none",
+                    },
                   }}
                 >
                   <Radio
@@ -485,7 +538,7 @@ export default function CheckoutPage() {
 
                   <Typography
                     sx={{
-                      fontSize: 14,
+                      fontSize: { xs: 12, md: 14 },
                       mt: 1,
                     }}
                   >
@@ -498,7 +551,7 @@ export default function CheckoutPage() {
             {/* Card Details */}
             <Box sx={{ p: 3 }}>
               <Grid container spacing={2}>
-                <Grid item xs={12}>
+              <Grid item xs={12} sx={{ width: { xs: "100%", md: 770 } }}>
                   <Typography sx={labelStyle}>
                     Name on Card
                   </Typography>
@@ -514,7 +567,7 @@ export default function CheckoutPage() {
                   />
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ width: { xs: "100%", md: 770 } }}>
                   <Typography sx={labelStyle}>
                     Card Number
                   </Typography>
@@ -530,7 +583,7 @@ export default function CheckoutPage() {
                   />
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6} sx={{ width: { xs: "100%", md: 375 } }}>
                   <Typography sx={labelStyle}>
                     Expire Date
                   </Typography>
@@ -547,7 +600,7 @@ export default function CheckoutPage() {
                   />
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6} sx={{ width: { xs: "100%", md: 375 } }}>
                   <Typography sx={labelStyle}>
                     CVC
                   </Typography>
@@ -567,10 +620,10 @@ export default function CheckoutPage() {
           </Box>
 
           {/* Additional Info */}
-          <Box sx={{ mt: 5,mb:5  }}>
+          <Box sx={{ mt: 5, mb: 5 }}>
             <Typography
               sx={{
-                fontSize: 22,
+                fontSize: { xs: 18, md: 22 },
                 fontWeight: 600,
                 mb: 2,
               }}
@@ -605,15 +658,16 @@ export default function CheckoutPage() {
         {/* RIGHT SIDE */}
         <Box
           sx={{
-            width: 330,
+            width: { xs: "100%", lg: 330 },
             bgcolor: "#fff",
             border: "1px solid #E4E7E9",
             p: 3,
+            mb:5,
           }}
         >
           <Typography
             sx={{
-              fontSize: 22,
+              fontSize: { xs: 18, md: 22 },
               fontWeight: 600,
               mb: 3,
             }}
