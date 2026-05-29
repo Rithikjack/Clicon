@@ -233,13 +233,13 @@ const CardsAddressPage = () => {
       <Dialog
         open={openDialog}
         onClose={() => setOpenDialog(false)}
-        PaperProps={{ sx: { borderRadius: '8px', width: '440px' } }}
+        PaperProps={{ sx: { borderRadius: '4px', width: '440px' } }}
       >
         <DialogContent sx={{ p: 3 }}>
 
           {/* Header */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
-            <Typography sx={{ fontWeight: 700, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#1a1a2e', fontFamily: "'Public Sans', sans-serif" }}>
+            <Typography sx={{ fontWeight: 500, fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#1a1a2e', fontFamily: "'Public Sans', sans-serif" }}>
               Add New Card
             </Typography>
             <IconButton size="small" onClick={() => setOpenDialog(false)}>
@@ -248,21 +248,21 @@ const CardsAddressPage = () => {
           </Box>
 
           {/* Name on Card */}
-          <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>Name on Card</Typography>
+          <Typography sx={{ fontSize: '13px', fontWeight: 500, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>Name on Card</Typography>
           <TextField fullWidth size="small" placeholder="Name on Card" value={form.name} onChange={handleChange('name')} sx={inputSx} />
 
           {/* Card Number */}
-          <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>Card Number</Typography>
+          <Typography sx={{ fontSize: '13px', fontWeight: 500, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>Card Number</Typography>
           <TextField fullWidth size="small" placeholder="Card Number" value={form.number} onChange={handleChange('number')} inputProps={{ maxLength: 19 }} sx={inputSx} />
 
           {/* Expiry + CVC */}
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Box sx={{ flex: 1 }}>
-              <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>Expire Date</Typography>
+              <Typography sx={{ fontSize: '13px', fontWeight: 500, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>Expire Date</Typography>
               <TextField fullWidth size="small" placeholder="MM / YY" value={form.expiry} onChange={handleChange('expiry')} inputProps={{ maxLength: 7 }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '4px', fontSize: '13px', '& fieldset': { borderColor: '#e0e0e0' }, '&:hover fieldset': { borderColor: '#FA8232' }, '&.Mui-focused fieldset': { borderColor: '#FA8232' } } }} />
             </Box>
             <Box sx={{ flex: 1 }}>
-              <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>CVC</Typography>
+              <Typography sx={{ fontSize: '13px', fontWeight: 500, color: '#1a1a2e', mb: 0.75, fontFamily: "'Public Sans', sans-serif" }}>CVC</Typography>
               <TextField fullWidth size="small" placeholder="CVC" value={form.cvc} onChange={handleChange('cvc')} inputProps={{ maxLength: 4 }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '4px', fontSize: '13px', '& fieldset': { borderColor: '#e0e0e0' }, '&:hover fieldset': { borderColor: '#FA8232' }, '&.Mui-focused fieldset': { borderColor: '#FA8232' } } }} />
             </Box>
           </Box>
@@ -270,7 +270,7 @@ const CardsAddressPage = () => {
           {/* Submit */}
           <Button
             fullWidth variant="contained" onClick={handleAddCard}
-            sx={{ mt: 3, height: '46px', bgcolor: '#FA8232', color: '#fff', fontWeight: 700, fontSize: '14px', letterSpacing: '0.5px', borderRadius: '4px', boxShadow: 'none', textTransform: 'uppercase', fontFamily: "'Public Sans', sans-serif", '&:hover': { bgcolor: '#e07020', boxShadow: 'none' } }}
+            sx={{ mt: 3, height: '40px', bgcolor: '#FA8232', color: '#fff', fontWeight: 700, fontSize: '14px', letterSpacing: '0.5px', borderRadius: '2px', boxShadow: 'none', textTransform: 'uppercase', fontFamily: "'Public Sans', sans-serif",width:'130px', '&:hover': { bgcolor: '#e07020', boxShadow: 'none' } }}
           >
             Add Card
           </Button>
