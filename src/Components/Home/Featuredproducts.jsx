@@ -137,7 +137,7 @@ const ProductCard = ({ product }) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         sx={{
-          border: '1px solid #E4E7E9',
+         
           p: 2,
           position: 'relative',
           overflow: 'hidden',
@@ -292,7 +292,6 @@ const FeaturedProducts = () => {
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '280px 1fr' },
             gap: 0,
-            border: '1px solid #E4E7E9',
             borderRadius: '10px',
             overflow: 'hidden'
           }}
@@ -308,7 +307,6 @@ const FeaturedProducts = () => {
             sx={{
               width: '100%',
               objectFit: 'cover',
-              borderRadius: '6px',
               mt: 'auto'
             }}
           />
@@ -396,8 +394,8 @@ const FeaturedProducts = () => {
                 <Box
                   key={product.id}
                   sx={{
-                    borderLeft: '1px solid #E4E7E9',
-                    borderTop: index >= 4 ? '1px solid #E4E7E9' : 'none'
+                    borderLeft: index % 4 !== 0 ? '1px solid #E4E7E9' : 'none',
+borderTop: index >= 4 ? '1px solid #E4E7E9' : 'none'
                   }}
                 >
                   <ProductCard product={product} />

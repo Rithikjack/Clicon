@@ -12,11 +12,6 @@ import FormControl from '@mui/material/FormControl';
 import IconButton from '@mui/material/IconButton';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -24,18 +19,31 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import product1 from '../../assets/Googlepixel.png';
 import product2 from '../../assets/Backcase.png';
 
+import Tik from '../../assets/OrderHistory/Tik.png'
+import User2 from '../../assets/OrderHistory/User2.png'
+import Map from '../../assets/OrderHistory/Map.png'
+import Location from '../../assets/OrderHistory/Location.png'
+import Success from '../../assets/OrderHistory/Sucess.png'
+import Completed from '../../assets/OrderHistory/Completed.png'
+
+import progress from '../../assets/OrderHistory/Progress.png'
+import orderplaced from '../../assets/OrderHistory/Notebook.png'
+import packaging from '../../assets/OrderHistory/Package.png'
+import onroad from '../../assets/OrderHistory/Truck.png'
+import Deliverd from '../../assets/OrderHistory/Handshake.png'
+
 const orderActivity = [
-  { icon: <CheckCircleOutlinedIcon sx={{ color: '#38a169', fontSize: '18px' }} />, text: 'Your order has been delivered. Thank you for shopping at Clicon!', date: '23 Jan, 2021 at 7:32 PM', bg: '#e8f8ef' },
-  { icon: <PersonOutlineOutlinedIcon sx={{ color: '#FA8232', fontSize: '18px' }} />, text: 'Our delivery man (John Wick) Has picked-up your order for delivery.', date: '23 Jan, 2021 at 2:00 PM', bg: '#fff5ee' },
-  { icon: <LocationOnOutlinedIcon sx={{ color: '#FA8232', fontSize: '18px' }} />, text: 'Your order has reached at last mile hub.', date: '22 Jan, 2021 at 6:00 AM', bg: '#fff5ee' },
-  { icon: <LocalShippingOutlinedIcon sx={{ color: '#FA8232', fontSize: '18px' }} />, text: 'Your order on the way to (last mile) hub.', date: '21, 2021 at 5:32 AM', bg: '#fff5ee' },
-  { icon: <CheckCircleOutlinedIcon sx={{ color: '#FA8232', fontSize: '18px' }} />, text: 'Your order is successfully verified.', date: '20 Jan, 2021 at 7:32 PM', bg: '#fff5ee' },
-  { icon: <InventoryOutlinedIcon sx={{ color: '#FA8232', fontSize: '18px' }} />, text: 'Your order has been confirmed.', date: '19 Jan, 2021 at 2:61 PM', bg: '#fff5ee' },
+  { img: Tik,       text: 'Your order has been delivered. Thank you for shopping at Clicon!', date: '23 Jan, 2021 at 7:32 PM' },
+  { img: User2,     text: 'Our delivery man (John Wick) Has picked-up your order for delivery.', date: '23 Jan, 2021 at 2:00 PM' },
+  { img: Map,       text: 'Your order has reached at last mile hub.', date: '22 Jan, 2021 at 6:00 AM' },
+  { img: Location,  text: 'Your order on the way to (last mile) hub.', date: '21, 2021 at 5:32 AM' },
+  { img: Success,   text: 'Your order is successfully verified.', date: '20 Jan, 2021 at 7:32 PM' },
+  { img: Completed, text: 'Your order has been confirmed.', date: '19 Jan, 2021 at 2:61 PM' },
 ];
 
 const products = [
   {
-    img: null, // replace with product1
+    img: product1,
     category: 'SMARTPHONE',
     name: 'Google Pixel 6 Pro- 5G Android Phone - Unlocked Smartphone with Advanced Pixel C...',
     price: '$899',
@@ -43,7 +51,7 @@ const products = [
     subtotal: '$899',
   },
   {
-    img: null, // replace with product2
+    img: product2,
     category: 'ACCESSORIES',
     name: 'Tech21 Evo Clear for Google Pixel 6 Pro - Crystal Clear Phone Case with 12ft Multi-Dr...',
     price: '$39',
@@ -55,12 +63,13 @@ const products = [
 const trackSteps = ['Order Placed', 'Packaging', 'On The Road', 'Delivered'];
 const activeStep = 1;
 
+const stepIcons = [orderplaced, packaging, onroad, Deliverd];
+
 const starRatingOptions = ['1 Star Rating', '2 Star Rating', '3 Star Rating', '4 Star Rating', '5 Star Rating'];
 
 const OrderDetailsPage = () => {
   const navigate = useNavigate();
 
-  // ── Rating dialog state ──
   const [openRating, setOpenRating] = useState(false);
   const [rating, setRating] = useState('5 Star Rating');
   const [feedback, setFeedback] = useState('');
@@ -71,14 +80,11 @@ const OrderDetailsPage = () => {
     setFeedback('');
   };
 
-  // Star count from selected rating string
-  const starCount = parseInt(rating.charAt(0));
-
   return (
-    <Box sx={{ fontFamily: "'Public Sans', sans-serif" }}>
+    <Box sx={{ fontFamily: "'Public Sans', sans-serif", px: { xs: 1, sm: 2, md: 0 } }}>
 
       {/* ── Header ── */}
-      <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: 3, mb: 3 }}>
+      <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: { xs: 2, sm: 3 }, mb: 3 }}>
 
         {/* Title Row */}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -87,21 +93,13 @@ const OrderDetailsPage = () => {
             sx={{ display: 'flex', alignItems: 'center', gap: 1, cursor: 'pointer', color: '#444' }}
           >
             <ArrowBackIcon sx={{ fontSize: '18px' }} />
-            <Typography sx={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: "'Public Sans', sans-serif" }}>
+            <Typography sx={{ fontWeight: 700, fontSize: { xs: '12px', sm: '14px' }, textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: "'Public Sans', sans-serif" }}>
               Order Details
             </Typography>
           </Box>
-
-          {/* Leave a Rating — opens dialog */}
           <Typography
             onClick={() => setOpenRating(true)}
-            sx={{
-              fontSize: '13px',
-              color: '#FA8232',
-              cursor: 'pointer',
-              fontFamily: "'Public Sans', sans-serif",
-              '&:hover': { textDecoration: 'underline' },
-            }}
+            sx={{ fontSize: { xs: '12px', sm: '13px' }, color: '#FA8232', cursor: 'pointer', fontFamily: "'Public Sans', sans-serif", '&:hover': { textDecoration: 'underline' } }}
           >
             Leave a Rating +
           </Typography>
@@ -113,103 +111,67 @@ const OrderDetailsPage = () => {
             backgroundColor: '#fffbf5',
             border: '1px solid #ffe0c0',
             borderRadius: '6px',
-            p: 2.5,
+            p: { xs: 1.5, sm: 2.5 },
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             mb: 2.5,
+            flexWrap: 'wrap',
+            gap: 1,
           }}
         >
           <Box>
-            <Typography sx={{ fontWeight: 700, fontSize: '18px', color: '#1a1a2e', fontFamily: "'Public Sans', sans-serif" }}>
+            <Typography sx={{ fontWeight: 700, fontSize: { xs: '15px', sm: '18px' }, color: '#1a1a2e', fontFamily: "'Public Sans', sans-serif" }}>
               #96459761
             </Typography>
-            <Typography sx={{ fontSize: '12px', color: '#777', mt: 0.5, fontFamily: "'Public Sans', sans-serif" }}>
+            <Typography sx={{ fontSize: { xs: '11px', sm: '12px' }, color: '#777', mt: 0.5, fontFamily: "'Public Sans', sans-serif" }}>
               4 Products · Order Placed in 17 Jan, 2021 at 7:32 PM
             </Typography>
           </Box>
-          <Typography sx={{ fontWeight: 700, fontSize: '22px', color: '#FA8232', fontFamily: "'Public Sans', sans-serif" }}>
+          <Typography sx={{ fontWeight: 700, fontSize: { xs: '18px', sm: '22px' }, color: '#FA8232', fontFamily: "'Public Sans', sans-serif" }}>
             $1199.00
           </Typography>
         </Box>
 
         {/* Expected Arrival */}
-        <Typography sx={{ fontSize: '13px', color: '#444', mb: 2, fontFamily: "'Public Sans', sans-serif" }}>
+        <Typography sx={{ fontSize: { xs: '12px', sm: '13px' }, color: '#444', mb: 2, fontFamily: "'Public Sans', sans-serif" }}>
           Order expected arrival <strong>23 Jan, 2021</strong>
         </Typography>
-
-        {/* Tracking Steps */}
-        <Box sx={{ position: 'relative', mb: 1 }}>
-          {/* Background line */}
-          <Box sx={{ position: 'absolute', top: '12px', left: '12%', width: '76%', height: '3px', backgroundColor: '#e0e0e0', zIndex: 0 }} />
-          {/* Progress line */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '12px',
-              left: '12%',
-              width: `${(activeStep / (trackSteps.length - 1)) * 76}%`,
-              height: '3px',
-              backgroundColor: '#FA8232',
-              zIndex: 1,
-            }}
-          />
-          {/* Steps */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', position: 'relative', zIndex: 2 }}>
+        {/* Tracking Steps — image + labels */}
+        <Box sx={{ mb: 1 }}>
+          <img src={progress} alt="Order Progress" style={{ width: '80%', objectFit: 'contain',marginLeft: '85px'}} />
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
             {trackSteps.map((step, i) => (
               <Box key={i} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '25%' }}>
-                <Box
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: '50%',
-                    backgroundColor: i <= activeStep ? '#FA8232' : '#e0e0e0',
-                    border: `3px solid ${i <= activeStep ? '#FA8232' : '#e0e0e0'}`,
-                    mb: 1,
-                  }}
-                />
-                <Box sx={{ fontSize: '18px', mb: 0.5 }}>
-                  {i === 0 && '📋'}
-                  {i === 1 && '📦'}
-                  {i === 2 && '🚚'}
-                  {i === 3 && '🎁'}
+                <Box sx={{ width: { xs: 20, sm: 28 }, height: { xs: 20, sm: 28 }, mb: 0.5 }}>
+                  <img src={stepIcons[i]} alt={step} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </Box>
-                <Typography sx={{ fontSize: '11px', color: i <= activeStep ? '#FA8232' : '#aaa', fontFamily: "'Public Sans', sans-serif", textAlign: 'center' }}>
+                <Typography sx={{ fontSize: { xs: '9px', sm: '11px' }, color: i <= activeStep ? '#FA8232' : '#aaa', fontFamily: "'Public Sans', sans-serif", textAlign: 'center' }}>
                   {step}
                 </Typography>
               </Box>
             ))}
           </Box>
         </Box>
+
       </Box>
 
       {/* ── Order Activity ── */}
-      <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: 3, mb: 3 }}>
-        <Typography sx={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#1a1a2e', mb: 2.5, pb: 1.5, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
+      <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: { xs: 2, sm: 3 }, mb: 3 }}>
+        <Typography sx={{ fontWeight: 700, fontSize: { xs: '12px', sm: '14px' }, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#1a1a2e', mb: 2.5, pb: 1.5, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
           Order Activity
         </Typography>
 
         {orderActivity.map((act, i) => (
-          <Box key={i} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
-            <Box
-              sx={{
-                width: 32,
-                height: 32,
-                borderRadius: '50%',
-                backgroundColor: act.bg,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              {act.icon}
+          <Box key={i} sx={{ display: 'flex', alignItems: 'flex-start', gap: { xs: 1.5, sm: 2 }, mb: 2 }}>
+            <Box sx={{ width: { xs: 36, sm: 45 }, height: { xs: 36, sm: 45 }, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src={act.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </Box>
             <Box>
-              <Typography sx={{ fontSize: '13px', color: '#444', fontFamily: "'Public Sans', sans-serif" }}>
+              <Typography sx={{ fontSize: { xs: '12px', sm: '13px' }, color: '#444', fontFamily: "'Public Sans', sans-serif" }}>
                 {act.text}
               </Typography>
-              <Typography sx={{ fontSize: '11px', color: '#aaa', mt: 0.3, fontFamily: "'Public Sans', sans-serif" }}>
+              <Typography sx={{ fontSize: { xs: '10px', sm: '11px' }, color: '#aaa', mt: 0.3, fontFamily: "'Public Sans', sans-serif" }}>
                 {act.date}
               </Typography>
             </Box>
@@ -218,13 +180,13 @@ const OrderDetailsPage = () => {
       </Box>
 
       {/* ── Products ── */}
-      <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: 3, mb: 3 }}>
-        <Typography sx={{ fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#1a1a2e', mb: 2.5, pb: 1.5, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
+      <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: { xs: 2, sm: 3 }, mb: 3 }}>
+        <Typography sx={{ fontWeight: 700, fontSize: { xs: '12px', sm: '14px' }, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#1a1a2e', mb: 2.5, pb: 1.5, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
           Product (02)
         </Typography>
 
-        {/* Table Header */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: '3fr 1fr 1fr 1fr', gap: 1, pb: 1, borderBottom: '1px solid #e0e0e0', mb: 1 }}>
+        {/* Table Header — hidden on xs, shown on sm+ */}
+        <Box sx={{ display: { xs: 'none', sm: 'grid' }, gridTemplateColumns: '3fr 1fr 1fr 1fr', gap: 1, pb: 1, borderBottom: '1px solid #e0e0e0', mb: 1 }}>
           {['PRODUCTS', 'PRICE', 'QUANTITY', 'SUB-TOTAL'].map((h) => (
             <Typography key={h} sx={{ fontSize: '11px', fontWeight: 700, color: '#777', fontFamily: "'Public Sans', sans-serif" }}>
               {h}
@@ -233,35 +195,61 @@ const OrderDetailsPage = () => {
         </Box>
 
         {products.map((p, i) => (
-          <Box key={i} sx={{ display: 'grid', gridTemplateColumns: '3fr 1fr 1fr 1fr', gap: 1, py: 1.5, borderBottom: '1px solid #f5f5f5', alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box key={i} sx={{ py: 1.5, borderBottom: '1px solid #f5f5f5' }}>
+            {/* Mobile layout */}
+            <Box sx={{ display: { xs: 'flex', sm: 'none' }, gap: 1.5, alignItems: 'flex-start' }}>
               <Box
                 component="img"
                 src={p.img || ''}
                 alt={p.name}
-                sx={{ width: 50, height: 50, objectFit: 'contain', border: '1px solid #f0f0f0', borderRadius: '4px', bgcolor: '#fafafa' }}
+                sx={{ width: 55, height: 55, objectFit: 'contain',  borderRadius: '4px', flexShrink: 0 }}
               />
-              <Box>
+              <Box sx={{ flex: 1 }}>
                 <Typography sx={{ fontSize: '10px', color: '#FA8232', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>
                   {p.category}
                 </Typography>
-                <Typography sx={{ fontSize: '12px', color: '#444', fontFamily: "'Public Sans', sans-serif", lineHeight: 1.4 }}>
+                <Typography sx={{ fontSize: '12px', color: '#444', fontFamily: "'Public Sans', sans-serif", lineHeight: 1.4, mb: 0.5 }}>
                   {p.name}
                 </Typography>
+                <Box sx={{ display: 'flex', gap: 2 }}>
+                  <Typography sx={{ fontSize: '12px', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>{p.price}</Typography>
+                  <Typography sx={{ fontSize: '12px', color: '#777', fontFamily: "'Public Sans', sans-serif" }}>{p.qty}</Typography>
+                  <Typography sx={{ fontSize: '12px', fontWeight: 600, color: '#FA8232', fontFamily: "'Public Sans', sans-serif" }}>{p.subtotal}</Typography>
+                </Box>
               </Box>
             </Box>
-            <Typography sx={{ fontSize: '13px', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>{p.price}</Typography>
-            <Typography sx={{ fontSize: '13px', color: '#777', fontFamily: "'Public Sans', sans-serif" }}>{p.qty}</Typography>
-            <Typography sx={{ fontSize: '13px', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>{p.subtotal}</Typography>
+
+            {/* Desktop layout */}
+            <Box sx={{ display: { xs: 'none', sm: 'grid' }, gridTemplateColumns: '3fr 1fr 1fr 1fr', gap: 1, alignItems: 'center' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box
+                  component="img"
+                  src={p.img || ''}
+                  alt={p.name}
+                  sx={{ width: 50, height: 50, objectFit: 'contain', borderRadius: '4px', }}
+                />
+                <Box>
+                  <Typography sx={{ fontSize: '10px', color: '#FA8232', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>
+                    {p.category}
+                  </Typography>
+                  <Typography sx={{ fontSize: '12px', color: '#444', fontFamily: "'Public Sans', sans-serif", lineHeight: 1.4 }}>
+                    {p.name}
+                  </Typography>
+                </Box>
+              </Box>
+              <Typography sx={{ fontSize: '13px', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>{p.price}</Typography>
+              <Typography sx={{ fontSize: '13px', color: '#777', fontFamily: "'Public Sans', sans-serif" }}>{p.qty}</Typography>
+              <Typography sx={{ fontSize: '13px', fontWeight: 600, fontFamily: "'Public Sans', sans-serif" }}>{p.subtotal}</Typography>
+            </Box>
           </Box>
         ))}
       </Box>
 
       {/* ── Billing / Shipping / Notes ── */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 3 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' }, gap: { xs: 2, sm: 3 } }}>
 
         {/* Billing */}
-        <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: 2.5 }}>
+        <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: { xs: 2, sm: 2.5 } }}>
           <Typography sx={{ fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', mb: 1.5, pb: 1, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
             Billing Address
           </Typography>
@@ -278,7 +266,7 @@ const OrderDetailsPage = () => {
         </Box>
 
         {/* Shipping */}
-        <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: 2.5 }}>
+        <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: { xs: 2, sm: 2.5 } }}>
           <Typography sx={{ fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', mb: 1.5, pb: 1, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
             Shipping Address
           </Typography>
@@ -295,7 +283,7 @@ const OrderDetailsPage = () => {
         </Box>
 
         {/* Order Notes */}
-        <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: 2.5 }}>
+        <Box sx={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', p: { xs: 2, sm: 2.5 }, gridColumn: { xs: '1', sm: '1 / -1', md: 'auto' } }}>
           <Typography sx={{ fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', mb: 1.5, pb: 1, borderBottom: '1px solid #e0e0e0', fontFamily: "'Public Sans', sans-serif" }}>
             Order Notes
           </Typography>
@@ -310,11 +298,12 @@ const OrderDetailsPage = () => {
       <Dialog
         open={openRating}
         onClose={() => setOpenRating(false)}
+        fullWidth
         PaperProps={{
-          sx: { borderRadius: '8px', width: '420px', p: 0 },
+          sx: { borderRadius: '8px', width: { xs: '95vw', sm: '420px' }, maxWidth: '420px', p: 0 },
         }}
       >
-        <DialogContent sx={{ p: 3 }}>
+        <DialogContent sx={{ p: { xs: 2, sm: 3 } }}>
 
           {/* Header */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
@@ -350,22 +339,12 @@ const OrderDetailsPage = () => {
                       <span key={i} style={{ color: i < parseInt(val.charAt(0)) ? '#FA8232' : '#e0e0e0', fontSize: '16px' }}>★</span>
                     ))}
                   </Box>
-                  <Typography sx={{ fontSize: '13px', fontFamily: "'Public Sans', sans-serif" }}>
-                    {val}
-                  </Typography>
+                  <Typography sx={{ fontSize: '13px', fontFamily: "'Public Sans', sans-serif" }}>{val}</Typography>
                 </Box>
               )}
             >
               {starRatingOptions.map((r) => (
-                <MenuItem
-                  key={r}
-                  value={r}
-                  sx={{
-                    fontSize: '13px',
-                    fontFamily: "'Public Sans', sans-serif",
-                    '&:hover': { color: '#FA8232' },
-                  }}
-                >
+                <MenuItem key={r} value={r} sx={{ fontSize: '13px', fontFamily: "'Public Sans', sans-serif", '&:hover': { color: '#FA8232' } }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Box>
                       {[...Array(5)].map((_, i) => (
