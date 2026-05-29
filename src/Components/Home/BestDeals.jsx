@@ -12,6 +12,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Container from '@mui/material/Container';
+import starImage from '../../assets/StarRating.png'
+import cartImage from '../../assets/ShoppingCart.png'
 
 
 // Images
@@ -130,7 +132,7 @@ const BestDeals = () => {
         margin: '0 auto'
       }}
     >
-      <Box sx={{ maxWidth: '1320px', mx: 'auto', py: 5, px: 2 }}>
+      <Box sx={{  py: 5, px: '150px' }}>
 
         {/* HEADER */}
         <Box
@@ -148,14 +150,15 @@ const BestDeals = () => {
               display: 'flex',
               alignItems: 'center',
               gap: 2,
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              fontFamily: "'Public Sans', sans-serif",
             }}
           >
-            <Typography sx={{ fontSize: '22px', fontWeight: 700 }}>
+            <Typography sx={{ fontSize: '22px', fontWeight: 700,fontFamily: "'Public Sans', sans-serif",}}>
               Best Deals
             </Typography>
 
-            <Typography sx={{ fontSize: '13px', color: '#5F6C72' }}>
+            <Typography sx={{ fontFamily: "'Public Sans', sans-serif",fontSize: '13px', color: '#5F6C72' }}>
               Deals ends in
             </Typography>
 
@@ -167,7 +170,8 @@ const BestDeals = () => {
                 borderRadius: '6px',
                 fontWeight: 600,
                 fontSize: '14px',
-                color: '#5a4a00'
+                color: '#5a4a00',
+                fontFamily: "'Public Sans', sans-serif",
               }}
             >
               {time.days}d : {pad(time.hours)}h : {pad(time.minutes)}m :{' '}
@@ -177,10 +181,12 @@ const BestDeals = () => {
 
           <Typography
             sx={{
+              
               color: '#2DA5F3',
               fontWeight: 600,
               fontSize: '13px',
               cursor: 'pointer',
+              fontFamily: "'Public Sans', sans-serif",
               '&:hover': { textDecoration: 'underline' }
             }}
           >
@@ -195,7 +201,8 @@ const BestDeals = () => {
             gridTemplateColumns: { xs: '1fr', md: '260px 1fr' },
             border: '1px solid #E4E7E9',
             borderRadius: '10px',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            fontFamily: "'Public Sans', sans-serif",
           }}
         >
 
@@ -211,7 +218,8 @@ const BestDeals = () => {
               p: 2.5,
               display: 'flex',
               flexDirection: 'column',
-              bgcolor: '#fff'
+              bgcolor: '#fff',
+              fontFamily: "'Public Sans', sans-serif",
             }}
           >
 
@@ -225,7 +233,8 @@ const BestDeals = () => {
                   py: '3px',
                   borderRadius: '4px',
                   fontSize: '11px',
-                  fontWeight: 700
+                  fontWeight: 700,
+                  fontFamily: "'Public Sans', sans-serif",
                 }}
               >
                 32% OFF
@@ -239,7 +248,8 @@ const BestDeals = () => {
                   py: '3px',
                   borderRadius: '4px',
                   fontSize: '11px',
-                  fontWeight: 700
+                  fontWeight: 700,
+                  fontFamily: "'Public Sans', sans-serif",
                 }}
               >
                 HOT
@@ -260,27 +270,62 @@ const BestDeals = () => {
             />
 
             {/* Rating */}
-            <Typography sx={{ color: '#FA8232', fontSize: '13px', mb: 1 }}>
-              ★★★★★{' '}
-              <Box
-                component="span"
-                sx={{ color: '#929FA5', fontSize: '12px' }}
-              >
-                (52,677)
-              </Box>
-            </Typography>
+           {/* Rating */}
+<Box
+  sx={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 1,
+    mb: 1
+  }}
+>
+  {/* 5 Stars */}
+  <Box
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '2px'
+    }}
+  >
+    {[1, 2, 3, 4, 5].map((item) => (
+      <Box
+        key={item}
+        component="img"
+        src={starImage}
+        alt="star"
+        sx={{
+          width: '14px',
+          height: '14px',
+          objectFit: 'contain'
+        }}
+      />
+    ))}
+  </Box>
+
+  {/* Review Count */}
+  <Typography
+    sx={{
+      color: '#929FA5',
+      fontSize: '12px',
+      fontFamily: "'Public Sans', sans-serif",
+    }}
+  >
+    (52,677)
+  </Typography>
+</Box>
 
             {/* Title */}
             <Typography
               sx={{
                 fontSize: '16px',
-                fontWeight: 600,
+                fontWeight: 400,
                 lineHeight: '1.5',
                 mb: 1.5,
-                color: '#191C1F'
+                color: '#191C1F',
+                fontFamily: "'Public Sans', sans-serif",
               }}
             >
-              Xbox Series S – 512GB SSD Console with Wireless Controller
+              Xbox Series S - 512GB SSD Console with Wireless Controller - EU Versio...
             </Typography>
 
             {/* Price */}
@@ -296,7 +341,8 @@ const BestDeals = () => {
                 sx={{
                   textDecoration: 'line-through',
                   color: '#929FA5',
-                  fontSize: '13px'
+                  fontSize: '13px',
+                  fontFamily: "'Public Sans', sans-serif",
                 }}
               >
                 $865.99
@@ -320,11 +366,11 @@ const BestDeals = () => {
                 fontSize: '13px',
                 lineHeight: '1.7',
                 mb: 2,
-                flex: 1
+                flex: 1,
+                fontFamily: "'Public Sans', sans-serif",
               }}
             >
-              Games built using the Xbox Series X|S development kit showcase
-              unparalleled load times, visuals, and framerates.
+              Games built using the Xbox Series X|S development kit showcase unparalleled load times, visuals.
             </Typography>
 
             {/* Buttons */}
@@ -332,41 +378,62 @@ const BestDeals = () => {
 
               <IconButton
                 sx={{
-                  border: '1px solid #E4E7E9',
-                  borderRadius: '6px',
+                  // border: '1px solid #191C1F',
+                  borderRadius: '2px',
                   width: 40,
-                  height: 40
+                  height: 40,
+                  backgroundColor:'#FFE7D6', 
+                  color:'#191C1F'
                 }}
               >
                 <FavoriteBorderIcon sx={{ fontSize: 18 }} />
               </IconButton>
 
-              <Button
-                variant="contained"
-                startIcon={<ShoppingCartOutlinedIcon sx={{ fontSize: 16 }} />}
-                sx={{
-                  flex: 1,
-                  height: 40,
-                  backgroundColor: '#FA8232',
-                  boxShadow: 'none',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  borderRadius: '6px',
-                  '&:hover': {
-                    backgroundColor: '#e07020',
-                    boxShadow: 'none'
-                  }
-                }}
-              >
-                Add to Cart
-              </Button>
+              {/* Add To Cart */}
+<Button
+  variant="contained"
+  sx={{
+    flex: 1,
+    height: '40px',
+    backgroundColor: '#FA8232',
+    boxShadow: 'none',
+    borderRadius: '4px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 1,
+    fontSize: '9px',
+    fontWeight: 700,
+    fontFamily: "'Public Sans', sans-serif",
 
+    '&:hover': {
+      backgroundColor: '#e07020',
+      boxShadow: 'none'
+    }
+  }}
+>
+  <Box
+    component="img"
+    src={cartImage}
+    alt="cart"
+    sx={{
+      width: '20px',
+      height: '20px',
+      objectFit: 'contain'
+    }}
+  />
+
+  ADD TO CART
+</Button>
               <IconButton
                 sx={{
-                  border: '1px solid #E4E7E9',
-                  borderRadius: '6px',
+                  // border: '1px solid #191C1F',
+                  borderRadius: '2px',
                   width: 40,
-                  height: 40
+                  height: 40,
+                  fontFamily: "'Public Sans', sans-serif",
+                  backgroundColor:'#FFE7D6' ,
+                  color:'#191C1F'
                 }}
               >
                 <RemoveRedEyeOutlinedIcon sx={{ fontSize: 18 }} />
@@ -378,6 +445,7 @@ const BestDeals = () => {
           {/* PRODUCTS GRID */}
           <Box
             sx={{
+              fontFamily: "'Public Sans', sans-serif",
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr 1fr',

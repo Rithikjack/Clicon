@@ -9,8 +9,6 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Container from '@mui/material/Container';
 
-
-
 import laptop from '../../assets/computer2.png';
 import phone from '../../assets/smartphone.png';
 import headphone from '../../assets/hearphone.png';
@@ -50,27 +48,29 @@ const Categories = () => {
     <Container
       maxWidth={false}
       sx={{
-        maxWidth: '1000px',
+        width: '100%',
+        maxWidth: '1600px',
         mx: 'auto',
-        py: 5,
-        px: 2
+        py: 0,
+        px: { xs: 2, sm: 3, md: 5, lg: '120px' }
       }}
     >
       <Box
         sx={{
-          maxWidth: '1320px',
-          mx: 'auto',
-          py: 5,
-          px: 2
+          py: 2,
+          px: { xs: 0, sm: 3, md: 6 }
         }}
       >
+
         {/* TITLE */}
         <Typography
           sx={{
             textAlign: 'center',
-            fontSize: '32px',
+            fontSize: { xs: '26px', sm: '30px', md: '32px' },
             fontWeight: 700,
-            mb: 4
+            mb: 4,
+            fontFamily: "'Public Sans', sans-serif",
+            color: '#191C1F'
           }}
         >
           Shop with Categories
@@ -81,19 +81,22 @@ const Categories = () => {
           sx={{
             position: 'relative',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
+
           {/* LEFT BUTTON */}
           <IconButton
             sx={{
               position: 'absolute',
-              left: '-20px',
+              left: { xs: '-10px', md: '-20px' },
               zIndex: 2,
               width: '42px',
               height: '42px',
               backgroundColor: '#FA8232',
               color: '#fff',
+
               '&:hover': {
                 backgroundColor: '#FA8232'
               }
@@ -102,33 +105,36 @@ const Categories = () => {
             <ArrowBackIosNewIcon sx={{ fontSize: '18px' }} />
           </IconButton>
 
-          {/* CATEGORY CARDS */}
+          {/* CATEGORY GRID */}
           <Box
-            sx={{
-              width: '100%',
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: 'repeat(2,1fr)',
-                sm: 'repeat(3,1fr)',
-                md: 'repeat(6,1fr)'
-              },
-              gap: 2
-            }}
-          >
+  sx={{
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: {
+      xs: 'repeat(2,1fr)',
+      sm: 'repeat(3,1fr)',
+      md: 'repeat(4,1fr)',
+      lg: 'repeat(6,minmax(0,1fr))'
+    },
+    gap: { xs: 1.5, sm: 2 },
+    overflow: 'hidden'
+  }}
+>
             {categories.map((item, index) => (
               <Box
                 key={index}
                 sx={{
                   border: '1px solid #E4E7E9',
                   borderRadius: '4px',
-                  py: 3,
-                  px: 2,
+                  py: { xs: 2, sm: 3 },
+                  px: { xs: 1.5, sm: 2 },
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
                   transition: '0.3s',
                   cursor: 'pointer',
+                  backgroundColor: '#fff',
 
                   '&:hover': {
                     boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
@@ -136,14 +142,15 @@ const Categories = () => {
                   }
                 }}
               >
+
                 {/* IMAGE */}
                 <Box
                   component="img"
                   src={item.image}
-                  alt=""
+                  alt={item.title}
                   sx={{
-                    width: '100px',
-                    height: '100px',
+                    width: { xs: '70px', sm: '90px', md: '100px' },
+                    height: { xs: '70px', sm: '90px', md: '100px' },
                     objectFit: 'contain',
                     mb: 2
                   }}
@@ -152,13 +159,16 @@ const Categories = () => {
                 {/* TITLE */}
                 <Typography
                   sx={{
-                    fontSize: '14px',
+                    fontSize: { xs: '12px', sm: '13px', md: '14px' },
                     fontWeight: 500,
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    fontFamily: "'Public Sans', sans-serif",
+                    color: '#191C1F'
                   }}
                 >
                   {item.title}
                 </Typography>
+
               </Box>
             ))}
           </Box>
@@ -167,12 +177,13 @@ const Categories = () => {
           <IconButton
             sx={{
               position: 'absolute',
-              right: '-20px',
+              right: { xs: '-10px', md: '-20px' },
               zIndex: 2,
               width: '42px',
               height: '42px',
               backgroundColor: '#FA8232',
               color: '#fff',
+
               '&:hover': {
                 backgroundColor: '#FA8232'
               }
@@ -180,6 +191,7 @@ const Categories = () => {
           >
             <ArrowForwardIosIcon sx={{ fontSize: '18px' }} />
           </IconButton>
+
         </Box>
       </Box>
     </Container>

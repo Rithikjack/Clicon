@@ -286,7 +286,7 @@ const FeaturedProducts = () => {
         margin: '0 auto'
       }}
     >
-      <Box sx={{ maxWidth: '1320px', mx: 'auto', py: 5, px: 2 }}>
+      <Box sx={{ py: 5, px: '150px'}}>
         <Box
           sx={{
             display: 'grid',
