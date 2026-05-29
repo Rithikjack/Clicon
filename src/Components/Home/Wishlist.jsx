@@ -4,15 +4,14 @@ import {
     Typography,
     Button,
     IconButton,
-    Divider,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-
-
 import CloseIcon from "@mui/icons-material/Close";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+
 import Navbar from '../../Components/Home/Navbar'
 import Footer from '../../Components/Home/Black_Footer_2'
 
@@ -86,17 +85,29 @@ export default function WishlistPage() {
     return (
         <Box sx={{ bgcolor: "#F5F5F5", minHeight: "100vh" }}>
             <Navbar />
+
             {/* Breadcrumb */}
             <Box
                 sx={{
                     bgcolor: "#FFFFFF",
                     borderBottom: "1px solid #E4E7E9",
                     py: 2,
-                    px: 20,
+                    px: {
+                        xs: 2,
+                        sm: 4,
+                        md: 8,
+                        lg: 20,
+                    },
                 }}
             >
                 <Box
-                    sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1,
+                        flexWrap: "wrap",
+                    }}
+                >
                     <HomeOutlinedIcon
                         sx={{ fontSize: 16, color: "#5F6C72" }}
                     />
@@ -121,7 +132,6 @@ export default function WishlistPage() {
                 </Box>
             </Box>
 
-
             <Box
                 component={Link}
                 to="/shopcard"
@@ -138,21 +148,25 @@ export default function WishlistPage() {
                     },
                 }}
             >
-                <CompareArrowsIcon fontSize="small" />
-                Compare
             </Box>
-
 
             {/* Main Card */}
             <Box
                 sx={{
-                    maxWidth: "760px",
+                    width: "100%",
+                    maxWidth: "1200px",
                     mx: "auto",
                     mt: 6,
-                    maxWidth: '1200px',
+                    mb: 10,
                     bgcolor: "#FFFFFF",
                     border: "1px solid #E4E7E9",
-                    mb: 10
+
+                    px: {
+                        xs: 0,
+                        sm: 0,
+                    },
+
+                    overflowX: "auto",
                 }}
             >
                 {/* Title */}
@@ -170,13 +184,17 @@ export default function WishlistPage() {
                 {/* Table Header */}
                 <Box
                     sx={{
-                        display: "grid",
+                        display: {
+                            xs: "none",
+                            md: "grid",
+                        },
                         gridTemplateColumns: "3fr 1fr 1fr 1.5fr 40px",
                         bgcolor: "#F2F4F5",
                         px: 2,
                         py: 1.5,
                         borderTop: "1px solid #E4E7E9",
                         borderBottom: "1px solid #E4E7E9",
+                        minWidth: "1000px",
                     }}
                 >
                     <Typography
@@ -227,12 +245,41 @@ export default function WishlistPage() {
                         to={item.link}
                         key={item.id}
                         sx={{
-                            display: "grid",
+                            textDecoration: "none",
+
+                            display: {
+                                xs: "flex",
+                                md: "grid",
+                            },
+
+                            flexDirection: {
+                                xs: "column",
+                                sm: "column",
+                            },
+
                             gridTemplateColumns: "3fr 1fr 1fr 1.5fr 40px",
-                            alignItems: "center",
-                            px: 2,
+
+                            alignItems: {
+                                xs: "flex-start",
+                                md: "center",
+                            },
+
+                            gap: {
+                                xs: 2,
+                                md: 0,
+                            },
+
+                            px: {
+                                xs: 2,
+                                sm: 3,
+                            },
+
                             py: 2,
                             borderBottom: "1px solid #E4E7E9",
+
+                            minWidth: {
+                                md: "1000px",
+                            },
                         }}
                     >
                         {/* Product */}
@@ -241,6 +288,7 @@ export default function WishlistPage() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 2,
+                                width: "100%",
                             }}
                         >
                             <Box
@@ -248,18 +296,38 @@ export default function WishlistPage() {
                                 src={item.image}
                                 alt={item.name}
                                 sx={{
-                                    width: 60,
-                                    height: 60,
+                                    width: {
+                                        xs: 70,
+                                        sm: 80,
+                                        md: 60,
+                                    },
+
+                                    height: {
+                                        xs: 70,
+                                        sm: 80,
+                                        md: 60,
+                                    },
+
                                     objectFit: "contain",
+                                    flexShrink: 0,
                                 }}
                             />
 
                             <Typography
                                 sx={{
-                                    fontSize: "12px",
+                                    fontSize: {
+                                        xs: "13px",
+                                        sm: "14px",
+                                        md: "12px",
+                                    },
+
                                     color: "#191C1F",
                                     lineHeight: 1.5,
-                                    maxWidth: "320px",
+
+                                    maxWidth: {
+                                        xs: "100%",
+                                        md: "320px",
+                                    },
                                 }}
                             >
                                 {item.name}
@@ -267,7 +335,29 @@ export default function WishlistPage() {
                         </Box>
 
                         {/* Price */}
-                        <Box>
+                        <Box
+                            sx={{
+                                width: {
+                                    xs: "100%",
+                                    md: "auto",
+                                },
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    display: {
+                                        xs: "block",
+                                        md: "none",
+                                    },
+                                    fontSize: "11px",
+                                    color: "#5F6C72",
+                                    mb: 0.5,
+                                    fontWeight: 600,
+                                }}
+                            >
+                                PRICE
+                            </Typography>
+
                             {item.oldPrice && (
                                 <Typography
                                     sx={{
@@ -287,6 +377,7 @@ export default function WishlistPage() {
                                     fontSize: "13px",
                                     fontWeight: 500,
                                     display: "inline",
+                                    color: "#191C1F",
                                 }}
                             >
                                 {item.price}
@@ -294,41 +385,80 @@ export default function WishlistPage() {
                         </Box>
 
                         {/* Stock */}
-                        <Typography
-                            sx={{
-                                fontSize: "12px",
-                                fontWeight: 500,
-                                color: item.stockColor,
-                            }}
-                        >
-                            {item.stock}
-                        </Typography>
+                        <Box>
+                            <Typography
+                                sx={{
+                                    display: {
+                                        xs: "block",
+                                        md: "none",
+                                    },
+                                    fontSize: "11px",
+                                    color: "#5F6C72",
+                                    mb: 0.5,
+                                    fontWeight: 600,
+                                }}
+                            >
+                                STOCK STATUS
+                            </Typography>
+
+                            <Typography
+                                sx={{
+                                    fontSize: "12px",
+                                    fontWeight: 500,
+                                    color: item.stockColor,
+                                }}
+                            >
+                                {item.stock}
+                            </Typography>
+                        </Box>
 
                         {/* Button */}
-                        <Button
-                            variant="contained"
-                            endIcon={<ShoppingCartOutlinedIcon />}
+                        <Box
                             sx={{
-                                bgcolor: item.buttonColor,
-                                color: "#fff",
-                                fontSize: "11px",
-                                fontWeight: 600,
-                                borderRadius: 0,
-                                boxShadow: "none",
-                                width: "140px",
-                                height: "42px",
-
-                                "&:hover": {
-                                    bgcolor: item.buttonColor,
-                                    boxShadow: "none",
+                                width: {
+                                    xs: "100%",
+                                    md: "auto",
                                 },
                             }}
                         >
-                            ADD TO CART
-                        </Button>
+                            <Button
+                                variant="contained"
+                                endIcon={<ShoppingCartOutlinedIcon />}
+                                sx={{
+                                    bgcolor: item.buttonColor,
+                                    color: "#fff",
+                                    fontSize: "11px",
+                                    fontWeight: 600,
+                                    borderRadius: 0,
+                                    boxShadow: "none",
+
+                                    width: {
+                                        xs: "100%",
+                                        sm: "220px",
+                                        md: "140px",
+                                    },
+
+                                    height: "42px",
+
+                                    "&:hover": {
+                                        bgcolor: item.buttonColor,
+                                        boxShadow: "none",
+                                    },
+                                }}
+                            >
+                                ADD TO CART
+                            </Button>
+                        </Box>
 
                         {/* Remove */}
-                        <IconButton>
+                        <IconButton
+                            sx={{
+                                alignSelf: {
+                                    xs: "flex-end",
+                                    md: "center",
+                                },
+                            }}
+                        >
                             <CloseIcon
                                 sx={{
                                     fontSize: 16,
@@ -339,6 +469,7 @@ export default function WishlistPage() {
                     </Box>
                 ))}
             </Box>
+
             <Footer />
         </Box>
     );

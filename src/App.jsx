@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from '  react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './FootStyle.css'
 // Pages
 import HomePage from './Pages/HomePage'
@@ -25,10 +25,12 @@ import Login from '../src/Pages/Auth/Sign-in/Register.jsx'
 import Signup from '../src/Pages/Auth/Sign-in/Register.jsx'
 import Shop from '../src/Components/Home/Mac.jsx'
 import Compare from './Components/Home/Compare.jsx'
-import Wish from './Components/Home/Wishlist.jsx'
+// import Wish from './Components/Home/Wishlist.jsx'
 import ShopCard from './Components/Home/ShopCard.jsx'
 import CheckOut from './Components/Home/CheckOut.jsx'
 import AddCard from './Components/Home/ShopCard.jsx'
+
+import History from './Components/Home/Browsing_History.jsx'
 
 
 
@@ -122,10 +124,13 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/drone" element={<Shop />} />
         <Route path="/compare" element={<Compare />} />
-        <Route path="/wish" element={<Wish />} />
+        {/* <Route path="/wish" element={<Wish />} /> */}
         <Route path="/shopcard" element={<ShopCard />} />
         <Route path="/check" element={<CheckOut />} />
         <Route path="/add-card" element={<AddCard />} />
+
+        <Route path="/his" element={<History />} />
+
 
       </Routes>
     </BrowserRouter>
