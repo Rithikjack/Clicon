@@ -27,7 +27,7 @@ import Shop from '../src/Components/Home/Mac.jsx'
 import Compare from './Components/Home/Compare.jsx'
 // import Wish from './Components/Home/Wishlist.jsx'
 import ShopCard from './Components/Home/ShopCard.jsx'
-// import CheckOut from './Components/Home/CheckOut.jsx'
+import CheckOut from './Components/Home/CheckOut.jsx'
 import AddCard from './Components/Home/ShopCard.jsx'
 
 import History from './Components/Home/Browsing_History.jsx'
@@ -126,7 +126,7 @@ const App = () => {
         <Route path="/compare" element={<Compare />} />
         {/* <Route path="/wish" element={<Wish />} /> */}
         <Route path="/shopcard" element={<ShopCard />} />
-        {/* <Route path="/check" element={<CheckOut />} /> */}
+        <Route path="/check" element={<CheckOut />} />
         <Route path="/add-card" element={<AddCard />} />
 
         <Route path="/his" element={<History />} />
