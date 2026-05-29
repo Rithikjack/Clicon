@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Buds from '../assets/Buds.png'
+import { Link } from "react-router-dom";
 
 import Blue from '../assets/Bluetooth 2.png'
 import Blue_2 from '../assets/Bluetooth 3.png'
@@ -34,6 +35,7 @@ const products = [
         badge: "BEST DEALS",
         badgeColor: "#2196f3",
         image: Blue,
+        link: '/wish'
     },
     {
         id: 2,
@@ -44,6 +46,7 @@ const products = [
         reviews: 796,
         badge: null,
         image: Blue_2,
+        link: '/read'
     },
     {
         id: 3,
@@ -55,6 +58,7 @@ const products = [
         badge: "HOT",
         badgeColor: "#f44336",
         image: Red,
+        link:'/blog'
     },
     {
         id: 4,
@@ -133,113 +137,123 @@ function StarRating({ value, count }) {
 // ─── PRODUCT CARD ─────────────────────────────────────────────────────────────
 function ProductCard({ product }) {
     return (
-        <Box
-            sx={{
-                position: "relative",
-                border: "1px solid #e8e8e8",
-                borderRadius: "4px",
-                backgroundColor: "#fff",
-                p: "8px",
-                cursor: "pointer",
-                transition: "box-shadow 0.2s",
-                "&:hover": { boxShadow: "0 4px 16px rgba(0,0,0,0.10)" },
-            }}
+        <Link
+            to={`/product/${product.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
         >
-            {/* Badge */}
-            {product.badge && (
-                <Chip
-                    label={product.badge}
-                    size="small"
-                    sx={{
-                        position: "absolute",
-                        top: "10px",
-                        left: "10px",
-                        backgroundColor: product.badgeColor,
-                        color: "#fff",
-                        fontWeight: 700,
-                        fontSize: "10px",
-                        height: "20px",
-                        borderRadius: "3px",
-                        fontFamily: "sans-serif",
-                        zIndex: 1,
-                    }}
-                />
-            )}
-
-            {/* Image */}
             <Box
                 sx={{
-                    width: "100%",
-                    height: "130px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    mb: "12px",
-                    borderRadius: "3px",
-                    overflow: "hidden",
+                    position: "relative",
+                    border: "1px solid #e8e8e8",
+                    borderRadius: "4px",
+                    backgroundColor: "#fff",
+                    p: "8px",
+                    cursor: "pointer",
+                    transition: "box-shadow 0.2s",
+                    "&:hover": { boxShadow: "0 4px 16px rgba(0,0,0,0.10)" },
                 }}
             >
-                {product.image ? (
-                    <img
-                        src={product.image}
-                        alt={product.name}
-                        style={{
-                            maxWidth: "100%",
-                            maxHeight: "100%",
-                            objectFit: "contain"
+                {/* Badge */}
+                {product.badge && (
+                    <Chip
+                        label={product.badge}
+                        size="small"
+                        sx={{
+                            position: "absolute",
+                            top: "10px",
+                            left: "10px",
+                            backgroundColor: product.badgeColor,
+                            color: "#fff",
+                            fontWeight: 700,
+                            fontSize: "10px",
+                            height: "20px",
+                            borderRadius: "3px",
+                            fontFamily: "sans-serif",
+                            zIndex: 1,
                         }}
                     />
-                ) : (
-                    <Typography sx={{ fontSize: "10px", color: "#ccc" }}>
-                        No Image
-                    </Typography>
                 )}
-            </Box>
 
-            {/* Rating */}
-            <StarRating value={product.rating} count={product.reviews} />
+                {/* Image */}
+                <Link
+                    to={product.link || `/product/${product.id}`}
+                    style={{ display: "block", textDecoration: "none" }}
+                >
+                <Box
+                    sx={{
+                        width: "100%",
+                        height: "130px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mb: "12px",
+                        borderRadius: "3px",
+                        overflow: "hidden",
+                    }}
+                >
+                    {product.image ? (
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            style={{
+                                maxWidth: "100%",
+                                maxHeight: "100%",
+                                objectFit: "contain"
+                            }}
+                        />
+                    ) : (
+                        <Typography sx={{ fontSize: "10px", color: "#ccc" }}>
+                            No Image
+                        </Typography>
+                    )}
+                </Box>
+            </Link>
 
-            {/* Name */}
-            <Typography
-                sx={{
-                    fontSize: "13px",
-                    color: "#222",
-                    lineHeight: 1.45,
-                    fontFamily: "sans-serif",
-                    mb: "6px",
-                    minHeight: "38px",
-                }}
-            >
-                {product.name}
-            </Typography>
+                {/* Rating */}
+                <StarRating value={product.rating} count={product.reviews} />
 
-            {/* Price */}
-            <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                {product.oldPrice && (
+                {/* Name */}
+                <Typography
+                    sx={{
+                        fontSize: "13px",
+                        color: "#222",
+                        lineHeight: 1.45,
+                        fontFamily: "sans-serif",
+                        mb: "6px",
+                        minHeight: "38px",
+                    }}
+                >
+                    {product.name}
+                </Typography>
+
+                {/* Price */}
+                <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    {product.oldPrice && (
+                        <Typography
+                            sx={{
+                                fontSize: "13px",
+                                color: "#aaa",
+                                textDecoration: "line-through",
+                                fontFamily: "sans-serif",
+                            }}
+                        >
+                            {product.oldPrice}
+                        </Typography>
+                    )}
+
                     <Typography
                         sx={{
-                            fontSize: "13px",
-                            color: "#aaa",
-                            textDecoration: "line-through",
+                            fontSize: "14px",
+                            fontWeight: 700,
+                            color: "#1a9cd8",
                             fontFamily: "sans-serif",
                         }}
                     >
-                        {product.oldPrice}
+                        {product.price}
                     </Typography>
-                )}
-
-                <Typography
-                    sx={{
-                        fontSize: "14px",
-                        fontWeight: 700,
-                        color: "#1a9cd8",
-                        fontFamily: "sans-serif",
-                    }}
-                >
-                    {product.price}
-                </Typography>
+                </Box>
             </Box>
-        </Box>
+        </Link>
     );
 }
 
